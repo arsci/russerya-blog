@@ -1,6 +1,6 @@
 import { JSX, SVGProps } from 'react'
 
-export const social = [
+export const socials = [
   {
     name: 'LinkedIn',
     href: 'https://linkedin.com/in/russerya/',
