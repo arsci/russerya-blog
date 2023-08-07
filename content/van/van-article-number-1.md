@@ -1,5 +1,5 @@
 ---
-title: "First Post Tech!"
+title: "First Post Van!"
 author: "Ryan Russell"
 date: "2023-08-06"
 ---
