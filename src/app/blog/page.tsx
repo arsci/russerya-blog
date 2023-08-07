@@ -1,5 +1,6 @@
 import { getAllPosts } from "../../utils/api";
-import PostPreview from "../../components/PostPreviewTech";
+import PostPreviewTech from "../../components/PostPreviewTech";
+import PostPreviewVan from "../../components/PostPreviewVan";
 import { join } from "path";
 
 export default function Blog() {
@@ -18,7 +19,7 @@ export default function Blog() {
         <div className="grid md:grid-cols-2 grid-cols-1 lg:gap-32 gap-8">
           {techPosts.map((post) => (
             <div key={post.title}>
-              <PostPreview post={post} />
+              <PostPreviewTech post={post} />
             </div>
           ))}
         </div>
@@ -30,7 +31,7 @@ export default function Blog() {
         <div className="grid md:grid-cols-2 grid-cols-1 lg:gap-32 gap-8">
           {vanPosts.map((post) => (
             <div key={post.title}>
-              <PostPreview post={post} />
+              <PostPreviewVan post={post} />
             </div>
           ))}
         </div>
