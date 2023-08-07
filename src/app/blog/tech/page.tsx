@@ -15,7 +15,7 @@ export default function Blog() {
 
         <div className="grid md:grid-cols-2 grid-cols-1 lg:gap-32 gap-8">
           {posts.map((post) => (
-            <div>
+            <div key={post.title}>
               <PostPreview post={post}/>
             </div>
           ))}
