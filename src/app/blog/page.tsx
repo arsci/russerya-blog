@@ -1,37 +1,26 @@
 import { getAllPosts } from "../../utils/api";
-import PostPreviewTech from "../../components/PostPreviewTech";
-import PostPreviewVan from "../../components/PostPreviewVan";
-import { join } from "path";
+import PostPreview from "../../components/PostPreview";
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Blog - Ryan Russell',
+  description: 'Blog - Ryan Russell',
+}
 
 export default function Blog() {
-  const vanPostsDirectory = join(process.cwd(), "content/van");
-  const vanPosts = getAllPosts(vanPostsDirectory, ["title", "date", "excerpt", "coverImage", "slug"]);
-  const techPostsDirectory = join(process.cwd(), "content/tech");
-  const techPosts = getAllPosts(techPostsDirectory, ["title", "date", "excerpt", "coverImage", "slug"]);
+  const posts = getAllPosts(["tech"], ["title", "date", "excerpt", "coverImage", "slug", "category"]);
 
   return (
-    <div className="container min-h-screen mx-auto px-5">
+    <div className="container mx-auto max-w-6xl px-5">
       <main>
-        <h1 className="text-center text-3xl">Technology Posts</h1>
+        <h1 className="text-center text-3xl">All Posts</h1>
 
         <div className="h-12"></div>
 
         <div className="grid md:grid-cols-2 grid-cols-1 lg:gap-32 gap-8">
-          {techPosts.map((post) => (
+          {posts.map((post) => (
             <div key={post.title}>
-              <PostPreviewTech post={post} />
-            </div>
-          ))}
-        </div>
-
-        <h1 className="text-center text-3xl">Van Posts</h1>
-
-        <div className="h-12"></div>
-
-        <div className="grid md:grid-cols-2 grid-cols-1 lg:gap-32 gap-8">
-          {vanPosts.map((post) => (
-            <div key={post.title}>
-              <PostPreviewVan post={post} />
+              <PostPreview post={post} />
             </div>
           ))}
         </div>

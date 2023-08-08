@@ -9,7 +9,7 @@ type Items = {
 export default function PostPreview({ post }: { post: Items }) {
   return (
     <div className="w-full mx-auto group">
-      <Link href={`/blog/tech/${post.slug}`}>
+      <Link href={`/blog/${post.category}/${post.slug}`}>
         {post?.coverImage && (
           <Image
             alt={`cover image for ${post.title}`}
@@ -24,7 +24,7 @@ export default function PostPreview({ post }: { post: Items }) {
             {post.title}
           </p>
           <DateFormatter dateString={post.date} />
-          <p>{post.excerpt}</p>
+          <p>{post.content}</p>
         </div>
       </Link>
     </div>

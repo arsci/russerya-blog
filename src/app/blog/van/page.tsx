@@ -1,13 +1,17 @@
+import type { Metadata } from 'next'
 import { getAllPosts } from "../../../utils/api";
-import PostPreview from "../../../components/PostPreviewVan";
-import { join } from "path";
+import PostPreview from "../../../components/PostPreview";
+
+export const metadata: Metadata = {
+  title: 'Van Build - Blog - Ryan Russell',
+  description: 'Van Build Blog by Ryan Russell',
+}
 
 export default function Blog() {
-  const postsDirectory = join(process.cwd(), "content/van");
-  const posts = getAllPosts(postsDirectory, ["title", "date", "excerpt", "coverImage", "slug"]);
+  const posts = getAllPosts(["van"], ["title", "date", "excerpt", "coverImage", "slug", "category"]);
 
   return (
-    <div className="container min-h-screen mx-auto px-5">
+    <div className="container mx-auto max-w-6xl px-5">
       <main>
         <h1 className="text-center text-3xl">Van Posts</h1>
 
