@@ -1,8 +1,7 @@
 import * as React from "react"
 import Image from "next/image"
-import { useMDXComponent } from "next-contentlayer/hooks"
-
 import { cn } from "@/utils/utils"
+import { useMDXComponent } from "next-contentlayer/hooks"
 
 const components = {
   img: ({
@@ -25,7 +24,7 @@ const components = {
       {...props}
     />
   ),
-  
+
   Image,
 }
 

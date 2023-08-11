@@ -5,7 +5,7 @@ import { Disclosure } from '@headlessui/react'
 
 export default function Header() {
   return (
-    <Disclosure as="nav" className="bg-white dark:bg-gray-800">
+    <Disclosure as="nav" className="bg-white dark:bg-gray-700">
      {({ open }) => (
        <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
