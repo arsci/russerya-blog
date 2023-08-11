@@ -1,32 +1,35 @@
-import { join } from "path";
-import type { Metadata } from 'next'
-import { getPostBySlug } from "../../../../utils/api";
-import markdownStyles from "./markdown-styles.module.css";
-import markdownToHtml from "../../../../utils/markdownToHtml";
+'use client'
+import { join } from 'path'
+import { notFound } from 'next/navigation'
+import { Mdx } from '@/components/MDXComponents'
+import { allVanPosts } from 'contentlayer/generated'
+import { useMDXComponent } from 'next-contentlayer/hooks'
+ 
+export const generateStaticParams = async () =>
+  allVanPosts.map((post) => ({ slug: post._raw.flattenedPath }))
 
-export const metadata: Metadata = {
-  title: 'Van Build - Blog - Ryan Russell',
-  description: 'Van Build Blog by Ryan Russell',
-}
-
-export default async function Post({ params }: { params: { slug: string } }) {
-  const postsDirectory = join(process.cwd(), "content/van");
-  const post = getPostBySlug(postsDirectory, params.slug, ["title", "author", "content"]);
-
-  const content = await markdownToHtml(post.content || "");
-
+export default function Post({ params }: { params: { slug: string } }) {
+  const post = allVanPosts.find((post) => post._raw.flattenedPath === join("blog/van/", params.slug))
+ 
+  if (!post) notFound()
+ 
+  const MDXContent = useMDXComponent(post.body.code)
   return (
-    <div className="container min-h-screen max-w-8xl px-8 mx-auto">
-      <main>
-        <div className="w-full h-16  text-black">
-          <p className="text-2xl">{post.title}</p>
-          <p className="text-gray-400">{post.author}</p>
-          <div
-            className={markdownStyles["markdown"]}
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
-        </div>
-      </main>
-    </div>
-  );
+    <article className="mx-auto max-w-xl py-8">
+      <div className="mb-8 text-center">
+        <time dateTime={post.date} className="mb-1 text-xs text-gray-600">
+          {new Date(post.date).toLocaleDateString('en-US', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+          })}
+        </time>
+        <h1 className="text-3xl font-bold">{post.title}</h1>
+        {params.slug}
+      </div>
+      <div className="prose mt-8 dark:prose-invert prose-headings:font-display prose-a:text-cyan-500 prose-img:rounded-2xl">
+      <Mdx code={post.body.code} />
+      </div>
+    </article>
+  )
 }

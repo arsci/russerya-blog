@@ -1,7 +1,7 @@
 'use client'
 import * as Nav from './Navigation'
+import { ThemeSwitcher } from './DarkMode'
 import { Disclosure } from '@headlessui/react'
-import ModeToggle from './DarkMode'
 
 export default function Header() {
   return (
@@ -12,7 +12,7 @@ export default function Header() {
             <div className="flex h-16 justify-between">
               <div className="flex pt-1">
                 <div className="flex flex-shrink-0 items-center">
-                  <a href="https://linkedin.com/in/russerya/">
+                  <a href="https://russerya.com/">
                     <img
                       className="inline-block h-10 w-10 rounded-full"
                       src="../favicon.ico"
@@ -30,11 +30,11 @@ export default function Header() {
                   </nav>
                 </div>
               </div>
-              {/* <div className="flex justify-end md:flex-1 pt-3">
+              <div className="flex justify-end md:flex-1 pt-3">
                 <div className="pointer-events-auto">
-                  <ModeToggle />
+                  <ThemeSwitcher />
                 </div>
-              </div> */}
+              </div>
             </div>
           </div>
         </>

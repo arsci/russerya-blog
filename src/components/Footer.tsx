@@ -1,6 +1,5 @@
 import * as Nav from './Navigation'
 import * as Socials from './SocialsAndIcons'
-import ModeToggle from './DarkMode'
   
 export default function Footer() {
   return (

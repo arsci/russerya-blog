@@ -12,7 +12,7 @@ export const socials = [
   },
   {
     name: 'GitHub',
-    href: 'https://github.com/arsci/',
+    href: 'https://github.com/arsci/russerya.com',
     icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
       <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
         <path
