@@ -12,7 +12,7 @@ export default function Header() {
             <div className="flex h-16 justify-between">
               <div className="flex pt-1">
                 <div className="flex flex-shrink-0 items-center">
-                  <a href="https://russerya.com/">
+                  <a href="/">
                     <img
                       className="inline-block h-10 w-10 rounded-full"
                       src="../favicon.ico"
