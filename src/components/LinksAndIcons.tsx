@@ -68,7 +68,7 @@ export function MoonIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement
   )
 }
 
-function ArrowLeftIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
+export function ArrowLeftIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
       <path

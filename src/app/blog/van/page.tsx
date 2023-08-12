@@ -10,11 +10,11 @@ export default function Home() {
     
   return (
     <div className="py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-5xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2 className="text-3xl font-bold tracking-tight blog-index sm:text-4xl">Van Build</h2>
           <p className="mt-2 text-lg leading-8 blog-header">
-            In June 2023 we <a href="/blog/van/about-the-van" className="text-gray-400">purchased a new 2023 Ford Transit</a> to convert into a camper. Our goal is to spend
+            In June 2023 we <a href="/blog/van/about-the-van" className="inline-links">purchased a new 2023 Ford Transit</a> to convert into a camper. Our goal is to spend
             the following ~9 months building it out to be able to live and work out of it for 2-3 weeks at a time.
             We&apos;ll be documenting the process here through various blog posts, guides, and videos!
           </p>
@@ -35,7 +35,7 @@ export default function Home() {
                 </time>
                   <a
                     href={post.category}
-                    className="relative z-10 rounded-full bg-gray-200 dark:bg-gray-600 px-3 py-1.5 font-medium text-gray-600 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-900"
+                    className="category-icons"
                   >
                     {post.category}
                   </a>

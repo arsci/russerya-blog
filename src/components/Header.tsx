@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import * as Nav from './Navigation'
-import { ThemeSwitcher } from './DarkMode'
+import { DarkModeSwitcher } from './DarkMode'
 import { Disclosure } from '@headlessui/react'
 
 export default function Header() {
@@ -33,7 +33,7 @@ export default function Header() {
               </div>
               <div className="flex justify-end md:flex-1 pt-3">
                 <div className="pointer-events-auto">
-                  <ThemeSwitcher />
+                  <DarkModeSwitcher />
                 </div>
               </div>
             </div>

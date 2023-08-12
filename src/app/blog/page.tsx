@@ -10,7 +10,7 @@ export default function Home() {
     
   return (
     <div className="py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-5xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2 className="text-3xl font-bold tracking-tight blog-index sm:text-4xl">From the blog</h2>
           <p className="mt-2 text-lg leading-8 blog-header">
@@ -32,10 +32,10 @@ export default function Home() {
                   })}
                 </time>
                   <a
-                    href={post.category}
-                    className="relative z-10 rounded-full bg-gray-200 dark:bg-gray-600 px-3 py-1.5 font-medium text-gray-600 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-900"
+                    href="/blog"
+                    className="category-icons"
                   >
-                    {post.category}
+                    blog
                   </a>
                 </div>
                 <div className="group relative">

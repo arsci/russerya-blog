@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { SunIcon } from './LinksAndIcons'
 import { MoonIcon } from './LinksAndIcons'
 
-export const ThemeSwitcher = () => {
+export const DarkModeSwitcher = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
