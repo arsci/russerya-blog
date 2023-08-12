@@ -9,7 +9,7 @@ export default function Home() {
       return compareDesc(new Date(a.date), new Date(b.date))
     });
   return (
-    <div className="mx-auto max-w-xl py-8">
+    <div className="mx-auto max-w-xl py-8 px-8">
       <h1 className="mb-8 text-center text-2xl font-black">Posts</h1>
       {allTechPosts.map((post) => (
         <article key={post._id} className="mb-8">
