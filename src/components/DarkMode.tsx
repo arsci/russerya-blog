@@ -1,8 +1,8 @@
 'use client'
 import { useTheme } from 'next-themes'
 import { useState, useEffect } from 'react'
-import { SunIcon } from './SocialsAndIcons'
-import { MoonIcon } from './SocialsAndIcons'
+import { SunIcon } from './LinksAndIcons'
+import { MoonIcon } from './LinksAndIcons'
 
 export const ThemeSwitcher = () => {
   const [mounted, setMounted] = useState(false);

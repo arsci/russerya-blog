@@ -72,9 +72,37 @@ export const VanPost = defineDocumentType(() => ({
   computedFields,
 }))
 
+export const HomePost = defineDocumentType(() => ({
+  name: "HomePost",
+  filePathPattern: `blog/home/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      required: true,
+    },
+    description: {
+      type: "string",
+    },
+    author: {
+      type: "string",
+      required: true,
+    },
+    date: {
+      type: "string",
+      required: true,
+    },
+    category: {
+      type: "string",
+      required: true,
+    },
+  },
+  computedFields,
+}))
+
 export default makeSource({
   contentDirPath: "./src/content",
-  documentTypes: [TechPost, VanPost],
+  documentTypes: [TechPost, VanPost, HomePost],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link'
 import * as Nav from './Navigation'
 import { ThemeSwitcher } from './DarkMode'
 import { Disclosure } from '@headlessui/react'
@@ -12,13 +13,13 @@ export default function Header() {
             <div className="flex h-16 justify-between">
               <div className="flex pt-1">
                 <div className="flex flex-shrink-0 items-center">
-                  <a href="/">
+                  <Link href="/">
                     <img
                       className="inline-block h-10 w-10 rounded-full"
-                      src="../favicon.ico"
+                      src="/favicon.ico"
                       alt=""
                     />
-                  </a>
+                  </Link>
                   <nav className="flex -mb-6 sm:ml-6 columns-2 sm:flex sm:justify-center sm:space-x-8 px-4" aria-label="Header">
                     {Nav.navigation.map((item) => (
                       <div key={item.name} className="pb-6">

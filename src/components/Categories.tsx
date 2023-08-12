@@ -1,4 +1,5 @@
 export const categories = [
   "tech",
-  "van"
+  "van",
+  "home"
 ]

@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { compareDesc } from "date-fns"
 import { allVanPosts } from 'contentlayer/generated'
  
@@ -8,34 +7,52 @@ export default function Home() {
     .sort((a,b) => {
       return compareDesc(new Date(a.date), new Date(b.date))
     });
+    
   return (
-    <div className="mx-auto max-w-xl py-8 px-8">
-      <h1 className="mb-8 text-center text-2xl font-black">Posts</h1>
-      {allVanPosts.map((post) => (
-        <article key={post._id} className="mb-8">
-          <h2 className="text-xl">
-            <Link href={post.slug} className="text-blue-700 hover:text-blue-900">
-              {post.title}
-            </Link>
-          </h2>
-          <time
-            dateTime={post.date}
-            className="mb-2 block text-xs text-gray-600"
-          >
-            {new Date(post.date).toLocaleDateString('en-US', {
-              day: 'numeric',
-              month: 'long',
-              year: 'numeric',
-            })}
-          </time>
-          <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-            {post.description}
+    <div className="py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl lg:mx-0">
+          <h2 className="text-3xl font-bold tracking-tight blog-index sm:text-4xl">Van Build</h2>
+          <p className="mt-2 text-lg leading-8 blog-header">
+            In June 2023 we <a href="/blog/van/about-the-van" className="text-gray-400">purchased a new 2023 Ford Transit</a> to convert into a camper. Our goal is to spend
+            the following ~9 months building it out to be able to live and work out of it for 2-3 weeks at a time.
+            We'll be documenting the process here through various blog posts, guides, and videos!
           </p>
-          <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-            {post._raw.flattenedPath}
-          </p>
-        </article>
-      ))}
-    </div>
+        </div>
+        <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t lines pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+            {allVanPosts.map((post) => (
+              <article key={post._id} className="flex max-w-xl flex-col items-start justify-between">
+                <div className="flex items-center gap-x-4 text-xs">
+                <time
+                  dateTime={post.date}
+                  className="mb-2 block text-xs blog-index"
+                >
+                  {new Date(post.date).toLocaleDateString('en-US', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                  })}
+                </time>
+                  <a
+                    href={post.category}
+                    className="relative z-10 rounded-full bg-gray-200 dark:bg-gray-600 px-3 py-1.5 font-medium text-gray-600 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-900"
+                  >
+                    {post.category}
+                  </a>
+                </div>
+                <div className="group relative">
+                  <h3 className="mt-3 text-lg font-semibold leading-6 blog-index dark:hover:text-gray-400 hover:text-black">
+                    <a href={post.slug}>
+                      <span className="absolute inset-0" />
+                      {post.title}
+                    </a>
+                  </h3>
+                  <p className="mt-5 line-clamp-3 text-sm leading-6 blog-index">{post.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
   )
 }

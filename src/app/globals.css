@@ -18,6 +18,18 @@
 
 @layer base{
   body {
-      @apply dark:bg-gray-800 bg-white
+       @apply dark:bg-gray-800 bg-white flex flex-col min-h-screen
   }
 }
+
+.index-page {
+}
+
+.lines {
+  @apply border-gray-200 dark:border-gray-600
+}
+
+.blog-landing {
+  @apply dark:text-gray-100 text-gray-800
+}
+
