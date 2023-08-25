@@ -38,7 +38,7 @@ export default function Home() {
                     {post.category}
                   </a>
                 </div>
-                <div className="group relative">
+                <div className="group relative mb-20">
                   <h3 className="mt-3 text-lg font-semibold leading-6 blog-index dark:hover:text-gray-400 hover:text-black">
                     <a href={post.slug}>
                       <span className="absolute inset-0" />

@@ -40,6 +40,10 @@ export const TechPost = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
+    ogImage: {
+      type: "string",
+      required: true,
+    }
   },
   computedFields,
 }))
@@ -68,6 +72,10 @@ export const VanPost = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
+    ogImage: {
+      type: "string",
+      required: true,
+    }
   },
   computedFields,
 }))
@@ -96,6 +104,10 @@ export const HomePost = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
+    ogImage: {
+      type: "string",
+      required: true,
+    }
   },
   computedFields,
 }))

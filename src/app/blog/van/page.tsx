@@ -14,7 +14,7 @@ export default function Home() {
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2 className="text-3xl font-bold tracking-tight blog-index sm:text-4xl">Van Build</h2>
           <p className="mt-2 text-lg leading-8 blog-header">
-            In June 2023 we <a href="/blog/van/about-the-van" className="inline-links">purchased a new 2023 Ford Transit</a> to convert into a camper. Our goal is to spend
+            In June 2023 we <a href="/blog/van/about-the-van" className="inline-links">purchased a 2023 Ford Transit</a> to convert into a camper. Our goal is to spend
             the following ~9 months building it out to be able to live and work out of it for 2-3 weeks at a time.
             We&apos;ll be documenting the process here through various blog posts, guides, and videos!
           </p>
@@ -40,7 +40,7 @@ export default function Home() {
                     {post.category}
                   </a>
                 </div>
-                <div className="group relative">
+                <div className="group relative mb-20">
                   <h3 className="mt-3 text-lg font-semibold leading-6 blog-index dark:hover:text-gray-400 hover:text-black">
                     <a href={post.slug}>
                       <span className="absolute inset-0" />
