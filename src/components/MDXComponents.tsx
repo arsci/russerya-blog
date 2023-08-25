@@ -61,27 +61,12 @@ const components = {
       {...props}
     />
   ),
-  // a: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-  //   <a
-  //     className={cn("font-medium underline underline-offset-4", className)}
-  //     {...props}
-  //   />
-  // ),
   p: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <p
       className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}
       {...props}
     />
   ),
-  // ul: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-  //   <ul className={cn("my-6 ml-6 list-disc", className)} {...props} />
-  // ),
-  // ol: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-  //   <ol className={cn("my-6 ml-6 list-decimal", className)} {...props} />
-  // ),
-  // li: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-  //   <li className={cn("mt-2", className)} {...props} />
-  // ),
   blockquote: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <blockquote
       className={cn(
@@ -111,24 +96,6 @@ const components = {
       {...props}
     />
   ),
-  // th: ({ className, ...props }: React.ThHTMLAttributes<HTMLTableHeaderCellElement>) => (
-  //   <th
-  //     className={cn(
-  //       "border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
-  //       className
-  //     )}
-  //     {...props}
-  //   />
-  // ),
-  // td: ({ className, ...props }: React.TdHTMLAttributes<HTMLTableDataCellElement>) => (
-  //   <td
-  //     className={cn(
-  //       "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
-  //       className
-  //     )}
-  //     {...props}
-  //   />
-  // ),
   pre: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <pre
       className={cn(
