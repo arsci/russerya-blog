@@ -33,7 +33,7 @@ export async function generateMetadata({
     return {}
   }
 
-  const url = 'https://' + env.NEXT_PUBLIC_APP_URL
+  const url = env.NEXT_PUBLIC_APP_URL
   const ogUrl = new URL(`${url}/images/blog/van/${post.ogImage}`)
 
   ogUrl.searchParams.set("heading", post.title)
