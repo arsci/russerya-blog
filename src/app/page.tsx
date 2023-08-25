@@ -126,7 +126,7 @@ export default function Home() {
       </div>
       <div className="mx-auto max-w-5xl px-6 lg:px-8">
         <div className="mx-auto mt-2 grid max-w-2xl grid-cols-1 border-t lines pt-10 sm:pt-16 lg:mx-0 lg:max-w-none mb-16">
-          My name is Ryan Russell, and I'm a Cloud and DevOps engineer from Northern California that has a passion for technology, cars, and home improvement projects.
+          My name is Ryan Russell, and I&apos;m a Cloud and DevOps engineer from Northern California that has a passion for technology, cars, and home improvement projects.
           I created this site in order to share some of my projects, enjoy!
         </div>
       </div>
