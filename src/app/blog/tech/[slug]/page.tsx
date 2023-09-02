@@ -34,10 +34,8 @@ export async function generateMetadata({
   }
 
   const url = env.NEXT_PUBLIC_APP_URL
+  const ogUrl = new URL(`${url}/images/blog/tech/${post.ogImage}`)
 
-  const sanitizedTitle = encodeURIComponent(post.title.replace(/'/g, ''));
-
-  const ogUrl = new URL(`${url}/api/og?title=${sanitizedTitle}`)
   ogUrl.searchParams.set("heading", post.title)
   ogUrl.searchParams.set("type", "Blog Post")
   ogUrl.searchParams.set("mode", "dark")
@@ -100,7 +98,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
                 src={ogImage}
                 width="1000"
                 height="1000"
-                className="h-auto w-full"
+                className="h-auto w-full rounded-md"
                 alt="header-image"
               />
             </div>

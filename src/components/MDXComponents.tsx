@@ -76,6 +76,15 @@ const components = {
       {...props}
     />
   ),
+  ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
+    <ul className={cn("my-6 ml-6 list-disc", className)} {...props} />
+  ),
+  ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
+    <ol className={cn("my-6 ml-6 list-decimal", className)} {...props} />
+  ),
+  li: ({ className, ...props }: React.HTMLAttributes<HTMLLIElement>) => (
+    <li className={cn("mt-2", className)} {...props} />
+  ),
   img: ({
     className,
     alt,
@@ -96,7 +105,7 @@ const components = {
       {...props}
     />
   ),
-  pre: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+  pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => (
     <pre
       className={cn(
         "mb-4 mt-6 overflow-x-auto rounded-lg border bg-black py-4",
@@ -105,10 +114,12 @@ const components = {
       {...props}
     />
   ),
-  code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+  //code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => <CodeBlock />,
+  //code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => <pre style={{ color: "pink" }} {...props} />,
+  code: ({ className, ...props }: React.HTMLAttributes<HTMLBodyElement>) => (
     <code
       className={cn(
-        "relative rounded-md px-[1rem] py-[0.2rem] font-mono text-sm",
+        "relative rounded-md font-mono text-sm",
         className
       )}
       {...props}
@@ -117,6 +128,7 @@ const components = {
   Image,
   Callout,
   Card: MdxCard,
+  //CodeBlock,
 }
 
 interface MdxProps {

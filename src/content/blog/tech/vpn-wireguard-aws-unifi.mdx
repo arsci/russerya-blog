@@ -1,8 +1,291 @@
 ---
-title: "VPN with AWS and UDM Pro"
+title: "Wireguard VPN with AWS and UDM Pro"
 author: "Ryan Russell"
-date: "2023-08-18"
+date: "2023-09-01"
 category: "tech"
-description: "Setting up a VPN in AWS and connecting a UniFi Dreamm Machine Pro"
-ogImage: "udm.jpg"
+description: "Setting up a VPN in AWS and connecting a UniFi Dream Machine Pro"
+ogImage: "network_routers.png"
 ---
+
+Earlier this year I setup Home Assistant as a replacement to SmartThings, but the one missing
+component was cloud access. While Home Assistant offers a paid cloud service, we found that it 
+was a bit too expensive just to be able to remotely control the lights. 
+
+A few months later I setup a PiHole for ad-blocking/tracking and wanted to be able utilize it
+outside of my home network. At the time I happened to also be tired of paying for a VPN service
+and constantly having to disable it for specific sites as many now crack down on the major VPN 
+providers.
+
+The next step was to setup my own remote VPN server. I'd get the benefit of the added security
+on all of my devices when off of my home network, access to Home Assistant on my local network,
+and the benefit of the PiHole DNS blocking.
+
+I chose to setup a basic Ubuntu server with AWS Lightsail running Wireguard. This server would
+act as my central VPN service that all of my devices, including my Ubiquiti Dream Machine Pro 
+gateway, would connect to.
+
+#### INSERT NETWORK DIAGRAM
+
+### AWS Lightsail
+
+I chose AWS Lightsail primarily for cost purposes. If I had additional AWS resources I needed 
+access to over my VPN I likely would have chosen a standard EC2 instance. For this purpose, the 
+cost of an EC2 instance was no match to AWS Lightsail. AWS offers the first 3 months for free for
+new accounts, and **data is included**. 
+
+On a small instance size you get:
+
+- 2GB Memory
+- 2vCPUs
+- 60GB SSD Disk
+
+And most importantly:
+
+- **3TB of included data transfer**
+
+The data transfer is what really makes this more cost effective than running a regular EC2 instance!
+
+## VPN Server
+
+### Creating A Lightsail Instance
+
+Once I chose Lightsail, it was time to setup my server. I chose the settings and configurations I wanted
+and setup my Terraform code to deploy my instance to a fresh AWS account.
+
+```hcl
+  resource "aws_lightsail_instance" "wireguard" {
+    name              = "wireguard"
+    availability_zone = "us-west-2b"
+    blueprint_id      = "ubuntu_22_04"
+    bundle_id         = "small_2_0"
+    ip_address_type   = "ipv4"
+    add_on {
+      type = "AutoSnapshot"
+      snapshot_time = "09:00"
+      status = "Enabled"
+    }
+  }
+```
+
+I chose to use port `51821` for my Wireguard configuration, so configured my security group to open that up to all 
+IP addresses so our mobile devices could connect outside my home network.
+
+I also added a security group to allow SSH access from my home network and VPN to configure the server. Unfortunately 
+Lightsail is fairly limited so fully automating the setup wasn't feasible, but for this situation a manual setup was fine.
+
+```hcl
+  resource "aws_lightsail_instance_public_ports" "vpn_port" {
+    instance_name = aws_lightsail_instance.wireguard.name
+
+    port_info {
+      protocol  = "udp"
+      from_port = 51821
+      to_port   = 51821
+      cidrs     = ["0.0.0.0/0"]
+    }
+
+    port_info {
+      protocol  = "tcp"
+      from_port = 22
+      to_port   = 22
+      cidrs     = ["${var.home_ip}/32", "10.0.0.0/8"]
+    }
+  }
+```
+
+Then finally I setup a static IP, and added a Route53 DNS record to point to it. This way I can use my domain name in my client
+configurations and if I ever need to move my server to a new account, VPC, etc where I lose the static IP, I won't have
+to update every client.
+
+```hcl
+  resource "aws_lightsail_static_ip" "vpn_ip" {
+    name = "vpn-static-ip"
+  }
+
+  resource "aws_lightsail_static_ip_attachment" "test" {
+    static_ip_name = aws_lightsail_static_ip.vpn_ip.name
+    instance_name  = aws_lightsail_instance.wireguard.name
+  }
+```
+
+### Installing and Configuring Wireguard
+
+With my instance launched, it was time to configure Wireguard. 
+
+I SSH'd into the instance and installed the necessary packages and settings:
+```bash
+  sudo apt install -y wireguard awscli jq resolvconf mtr traceroute net-tools
+  umask 077
+```
+
+Enable packet forwarding by uncommenting the following line in `/etc/sysctl.conf`:
+```text
+  net.ipv4.ip_forward=1
+```
+and reload `sysctl`
+```bash
+  sudo sysctl -p
+```
+
+Next I generated the keys and created the Wireguard config file. For details on creating the keys, refer to the [official Ubuntu
+documentation](https://ubuntu.com/server/docs/wireguard-vpn-site2site)
+
+I chose a CIDR block of `10.100.105.0/24` on port `51821` for my VPN network. To start, I only wanted to connect 3 devices to my Lightsail instance
+as part of my POC:
+
+* Lightsail Instance: `10.100.105.1`
+* Pixel 5: `10.100.105.2`
+* Ubiquiti Dream Machine Pro (home network): `10.100.105.3`
+* Macbook Pro: `10.100.105.4`
+
+### Setting up the configuration file:
+#### Interface configuration
+
+* Set the key file when the tunnel is brought up  
+  `PostUp = wg set %i private-key /etc/wireguard/%i.key`
+
+* Set the interface IP address for the Lightsail instance  
+  `Address = 10.100.105.1/24`
+
+* Set the listener port  
+  `ListenPort = 51821`
+
+* Set the DNS endpoint (this is the endpoint for my PiHole on my home network)  
+  `DNS = 10.5.5.192`
+
+* And finally we need to set the `iptable` rules to forward traffic correctly between network interfaces  
+  `PostUp   = iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE`
+
+#### Peer Configurations
+With the Interface configured, we can configure the peers. I generated the keys for each device and setup the Peer configurations in the Lightsail Wireguard
+configuration:
+
+* Pixel 5
+  ```text
+    [Peer]
+    PublicKey = <key>
+    AllowedIPs = 10.100.105.2/32
+  ```
+
+* Dream Machine Pro
+  ```text
+    [Peer]
+    PublicKey = <key>
+    AllowedIPs = 10.0.0.0/11, 10.100.105.3/32
+  ```
+  My home network CIDR is `10.0.0.0/11`, which is where the PiHole and Home Assistant are running, so I added those routes.
+
+* Macbook Pro
+  ```text
+    [Peer]
+    PublicKey = <key>
+    AllowedIPs = 10.100.105.4/32
+  ```
+
+The final configuration file looks like this:
+
+```text
+  [Interface]
+  PostUp = wg set %i private-key /etc/wireguard/%i.key
+  Address = 10.100.105.1/24
+  ListenPort = 51821
+  DNS = 10.5.5.192
+  PostUp   = iptables...
+  PostDown = iptables...
+
+  # Pixel 5
+  [Peer]
+  PublicKey = <key>
+  AllowedIPs = 10.100.105.2/32
+
+  # UDM
+  [Peer]
+  PublicKey = <key>
+  AllowedIPs = 10.0.0.0/11, 10.100.105.3/32
+
+  # MacBook
+  [Peer]
+  PublicKey = <key>
+  AllowedIPs = 10.100.105.4/32
+```
+
+## Client Peers
+
+### Android Pixel 5
+
+Wireguard has an Android app on the app store, so it was just a matter of setting the configuration:
+
+#### Interface
+
+- Address: `10.100.105.2/24`  
+- Listen Port: `51821`  
+- DNS Servers: `10.5.5.192, 8.8.8.8`  
+
+#### Peer (Lightsail Instance)
+
+- Public Key: `<Lightsail public key>`  
+- Endpoint: `<dns-endpoint>:51821`  
+- Allowed IPs: `0.0.0.0/0, ::/0`  
+
+#### On-Demand
+
+For this device I did not want the Always On VPN set, since it only needs to be active when _not_ on my home WiFi network.
+Unfortunately the Android Wireguard app does not have an 'On Demand' feature so I needed to use Tasker to automate the
+connect and disconnect based on network status.
+
+I created 4 tasker profiles:
+
+* Wifi Connected
+  * State: Wifi Connected to [Home SSID] -> Wireguard Off
+
+* Not Wifi Connected
+  * State: Not Wifi Connected to [Home SSID] -> Wireguard On
+
+* Airplane Mode
+  * State: Airplane Mode Active -> Wireguard Off
+
+* Not Airplane Mode
+  * State: Not Airplane Mode Active -> Wireguard On
+
+I also had to set `Allow remote control apps` in the Wireguard settings to allow Tasker to activate/deactivate the VPN.
+
+### Ubiquiti Dream Machine Pro
+
+The UDM actually has Wireguard installed already - it's one of the VPN options provided in the UniFi UI. Unfortunately I wasn't able to get the
+VPN to work through the UI, so I had to manually SSH into the UDM box and create my own interface just as I did on the Lightsail
+instance.
+
+```text
+  [Interface]
+  PostUp = wg set %i private-key /etc/wireguard/%i.key
+  Address = 10.100.105.3/24
+  ListenPort = 51821
+  DNS = 10.5.5.192, 8.8.8.8
+  PostUp = ping -c 1 10.100.105.1
+
+  [Peer]
+  PublicKey = <Lightsail public key>
+  Endpoint = <dns-endpoint>:51821
+  AllowedIPs = 10.100.105.0/24
+```
+
+### Macbook Pro
+
+Wireguard has an app on the App store that makes this configuration very easy to setup, and it even has an 'On Demand' option to configure
+network SSIDs.
+
+#### Interface
+
+* Addresses: `10.100.105.4/24`  
+* Listen port: `51821`  
+* DNS servers: `10.5.5.192`  
+
+#### Peer (Lightsail instance)
+
+* Endpoint: `<dns-endpoint>:51821`  
+* Allowed IPs: `0.0.0.0/0, ::/0`  
+
+#### OnDemand:
+
+* On-Demand: Wi-Fi only  
+* SSIDs: Except these SSIDs: [Home SSID]  

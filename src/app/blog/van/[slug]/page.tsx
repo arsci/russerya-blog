@@ -62,6 +62,7 @@ export async function generateMetadata({
       title: post.title,
       description: post.description,
       images: [ogUrl.toString()],
+
   },
   }
 }
@@ -98,7 +99,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
                 src={ogImage}
                 width="1000"
                 height="1000"
-                className="h-auto w-full"
+                className="h-auto w-full rounded-md"
                 alt="header-image"
               />
             </div>
