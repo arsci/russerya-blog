@@ -34,7 +34,6 @@ export default function Home() {
       <div className="mx-auto max-w-5xl px-6 lg:px-8">
         <h2 className="text-3xl font-bold tracking-tight blog-index sm:text-4xl">Latest Blog Posts</h2>
         <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t lines pt-4 sm:mt-8 sm:pt-12 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-          {allTechPosts.map((latestTechPost) => (
             <article key={latestTechPost._id} className="flex max-w-xl flex-col items-start justify-between">
               <div className="flex items-center gap-x-4 text-xs">
               <time
@@ -64,9 +63,6 @@ export default function Home() {
                 <p className="mt-5 line-clamp-3 text-sm leading-6 blog-index">{latestTechPost.description}</p>
               </div>
             </article>
-          ))}
-
-          {allVanPosts.map((latestVanPost) => (
             <article key={latestVanPost._id} className="flex max-w-xl flex-col items-start justify-between">
               <div className="flex items-center gap-x-4 text-xs">
               <time
@@ -96,9 +92,6 @@ export default function Home() {
                 <p className="mt-5 line-clamp-3 text-sm leading-6 blog-index">{latestVanPost.description}</p>
               </div>
             </article>
-          ))}
-
-          {allHomePosts.map((latestHomePost) => (
             <article key={latestHomePost._id} className="flex max-w-xl flex-col items-start justify-between">
               <div className="flex items-center gap-x-4 text-xs">
               <time
@@ -127,8 +120,7 @@ export default function Home() {
                 </h3>
                 <p className="mt-5 line-clamp-3 text-sm leading-6 blog-index">{latestHomePost.description}</p>
               </div>
-            </article>
-          ))}   
+            </article> 
         </div>
       </div>
       <div className="mx-auto max-w-5xl px-6 lg:px-8">
