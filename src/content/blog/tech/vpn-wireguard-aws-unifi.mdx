@@ -53,18 +53,18 @@ Once I chose Lightsail, it was time to setup my server. I chose the settings and
 and setup my Terraform code to deploy my instance to a fresh AWS account.
 
 ```hcl
-  resource "aws_lightsail_instance" "wireguard" {
-    name              = "wireguard"
-    availability_zone = "us-west-2b"
-    blueprint_id      = "ubuntu_22_04"
-    bundle_id         = "small_2_0"
-    ip_address_type   = "ipv4"
-    add_on {
-      type = "AutoSnapshot"
-      snapshot_time = "09:00"
-      status = "Enabled"
-    }
+resource "aws_lightsail_instance" "wireguard" {
+  name              = "wireguard"
+  availability_zone = "us-west-2b"
+  blueprint_id      = "ubuntu_22_04"
+  bundle_id         = "small_2_0"
+  ip_address_type   = "ipv4"
+  add_on {
+    type = "AutoSnapshot"
+    snapshot_time = "09:00"
+    status = "Enabled"
   }
+}
 ```
 
 I chose to use port `51821` for my Wireguard configuration, so configured my security group to open that up to all 

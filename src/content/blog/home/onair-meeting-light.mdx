@@ -237,40 +237,40 @@ With the Mac app installed and the ESP added to Home Assistant, the only compone
 
 ```text
 alias: "Meeting In Progress [Activate]"
-  description: "Activate the meeting light when the webcam turns on"
-  trigger:
-    - platform: state
-      entity_id:
-        - binary_sensor.ryanrussellmbp_camera_in_use
-      from: "off"
-      to: "on"
-      for:
-        hours: 0
-        minutes: 0
-        seconds: 5
-  condition:
-    - condition: device
-      device_id: ed267
-      domain: device_tracker
-      entity_id: device_tracker.ryanrussellmbp
-      type: is_home
-  action:
-    - type: turn_on
-      device_id: 9308c
-      entity_id: light.wled_s
-      domain: light
-      brightness_pct: 100
-    - device_id: 2d0a7
-      domain: select
-      entity_id: select.wled_meeting_light_preset
-      type: select_option
-      option: Meeting
-    - device_id: ed267
-      domain: mobile_app
-      type: notify
-      message: Meeting Light Activated
-      title: Meeting In Progress
-  mode: single
+description: "Activate the meeting light when the webcam turns on"
+trigger:
+  - platform: state
+    entity_id:
+      - binary_sensor.ryanrussellmbp_camera_in_use
+    from: "off"
+    to: "on"
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+condition:
+  - condition: device
+    device_id: ed267
+    domain: device_tracker
+    entity_id: device_tracker.ryanrussellmbp
+    type: is_home
+action:
+  - type: turn_on
+    device_id: 9308c
+    entity_id: light.wled_s
+    domain: light
+    brightness_pct: 100
+  - device_id: 2d0a7
+    domain: select
+    entity_id: select.wled_meeting_light_preset
+    type: select_option
+    option: Meeting
+  - device_id: ed267
+    domain: mobile_app
+    type: notify
+    message: Meeting Light Activated
+    title: Meeting In Progress
+mode: single
 ```
 
 The trigger is configured to fire when the Home Assistant app detects the `camera_in_use` parameter transitioning
@@ -287,35 +287,36 @@ and the light is active (since I can't see it from my desk).
 And finally when the meeting ends and my camera turns off, I need the meeting light to automatically deactivate:
 
 ```text
+
 alias: "Meeting In Progress [Deactivate]"
-  description: "Deactivate the meeting light when the webcam turns on"
-  trigger:
-    - platform: state
-      entity_id:
-        - binary_sensor.ryanrussellmbp_camera_in_use
-      from: "on"
-      to: "off"
-      for:
-        hours: 0
-        minutes: 0
-        seconds: 0
-  condition:
-    - condition: device
-      device_id: ed267
-      domain: device_tracker
-      entity_id: device_tracker.ryanrussellmbp
-      type: is_home
-  action:
-    - type: turn_off
-      device_id: 2d0a7
-      entity_id: light.wled_meeting_light
-      domain: light
-    - device_id: ed267
-      domain: mobile_app
-      type: notify
-      message: Meeting Light Deactivated
-      title: Meeting Ended
-  mode: single
+description: "Deactivate the meeting light when the webcam turns on"
+trigger:
+  - platform: state
+    entity_id:
+      - binary_sensor.ryanrussellmbp_camera_in_use
+    from: "on"
+    to: "off"
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+condition:
+  - condition: device
+    device_id: ed267
+    domain: device_tracker
+    entity_id: device_tracker.ryanrussellmbp
+    type: is_home
+action:
+  - type: turn_off
+    device_id: 2d0a7
+    entity_id: light.wled_meeting_light
+    domain: light
+  - device_id: ed267
+    domain: mobile_app
+    type: notify
+    message: Meeting Light Deactivated
+    title: Meeting Ended
+mode: single
 ```
 
 And finally I added a conditional notification on one of the Home Assistant dashboards. This displays on one of the tablets we have mounted

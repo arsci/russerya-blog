@@ -108,18 +108,16 @@ const components = {
   pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => (
     <pre
       className={cn(
-        "mb-4 mt-6 overflow-x-auto rounded-lg border bg-black py-4",
+        "mb-6 mt-6 rounded-lg relative border bg-black py-6 scroll overflow-scroll w-full px-6",
         className
       )}
       {...props}
     />
   ),
-  //code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => <CodeBlock />,
-  //code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => <pre style={{ color: "pink" }} {...props} />,
   code: ({ className, ...props }: React.HTMLAttributes<HTMLBodyElement>) => (
     <code
       className={cn(
-        "relative rounded-md font-mono text-sm",
+        "rounded-md font-mono text-sm scroll overflow-scroll",
         className
       )}
       {...props}
