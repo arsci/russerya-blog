@@ -126,17 +126,17 @@ export default function Home() {
       <div className="mx-auto max-w-5xl px-6 lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 border-t lines pt-8 sm:pt-8 lg:mx-0 lg:max-w-none mb-2">
           <p>
-            Hello and welcome! I'm Ryan Russell, a Cloud and DevOps Engineer from Northern California. My days are fueled by a deep-rooted passion for technology—whether I'm automating workflows, building cloud infrastructure, or diving into the code that makes it all possible. 
+            Hello and welcome! I&apos;m Ryan Russell, a Cloud and DevOps Engineer from Northern California. My days are fueled by a deep-rooted passion for technology—whether I&apos;m automating workflows, building cloud infrastructure, or diving into the code that makes it all possible. 
           </p>
         </div>
         <div className="mx-auto mt-2 grid max-w-2xl grid-cols-1 lines pt-2 sm:pt-6 lg:mx-0 lg:max-w-none mb-2">
           <p>
-            But my interests don't stop there. I'm also an avid car enthusiast who loves nothing more than the sound of a roaring engine and the feeling of freedom on the open road. When I'm not behind a screen or a steering wheel, you'll find me embroiled in various home improvement projects, striving to make my living space as efficient and comfortable as the systems I design at work.
+            But my interests don&apos;t stop there. I&apos;m also an avid car enthusiast who loves nothing more than the sound of a roaring engine and the feeling of freedom on the open road. When I&apos;m not behind a screen or a steering wheel, you&apos;ll find me embroiled in various home improvement projects, striving to make my living space as efficient and comfortable as the systems I design at work.
           </p>
         </div>
         <div className="mx-auto mt-2 grid max-w-2xl grid-cols-1 lines pt-2 sm:pt-6 lg:mx-0 lg:max-w-none mb-16">
           <p>
-            I created this blog as a platform to share my adventures in tech, automobiles, and home improvement. Whether you're a fellow engineer, a gearhead, a DIYer, or just someone curious about these worlds, I hope you find something here that sparks your interest. Enjoy exploring, and feel free to connect with me on 
+            I created this blog as a platform to share my adventures in tech, automobiles, and home improvement. Whether you&apos;re a fellow engineer, a gearhead, a DIYer, or just someone curious about these worlds, I hope you find something here that sparks your interest. Enjoy exploring, and feel free to connect with me on 
             <Link href={"https://linkedin.com/in/russerya/"}> LinkedIn </Link>and 
             <Link href={"https://github.com/arsci/"}> GitHub</Link>!
           </p>
