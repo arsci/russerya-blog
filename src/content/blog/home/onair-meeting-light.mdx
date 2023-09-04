@@ -1,7 +1,7 @@
 ---
 title: 'Making An "On Air" Meeting Light Alert'
 author: "Ryan Russell"
-date: "2023-09-02"
+date: "2023-09-01"
 category: "home"
 description: 'Making an "On Air" light to indicate when we are on meetings'
 ogImage: "meeting_light/studio.jpg"
@@ -237,7 +237,7 @@ With the Mac app installed and the ESP added to Home Assistant, the only compone
 
 ```yaml
 alias: "Meeting In Progress [Activate]"
-description: "Activate the meeting light when the webcam turns on"
+description: "Activate the meeting light when the webcam turns on" 
 trigger:
   - platform: state
     entity_id:
@@ -288,7 +288,7 @@ And finally when the meeting ends and my camera turns off, I need the meeting li
 
 ```yaml
 alias: "Meeting In Progress [Deactivate]"
-description: "Deactivate the meeting light when the webcam turns on"
+description: "Deactivate the meeting light when the webcam turns on" 
 trigger:
   - platform: state
     entity_id:
@@ -333,10 +333,10 @@ to the wall in the kitchen on the 2nd floor and will act as a secondary indicati
 
 ---
 
-```yaml
+```yaml caption="Note that this requires the card-mod add on from HACS"
 type: conditional
   conditions:
-    - entity: select.wled_meeting_light_preset
+    - entity: select.wled_meeting_light_preset 
       state: Meeting
   card:
     type: markdown
@@ -348,5 +348,5 @@ type: conditional
           text-align: center;
         }
 ```
-(note that this requires the `card-mod` add on from HACS)
+
 

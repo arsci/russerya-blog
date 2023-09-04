@@ -109,7 +109,7 @@ const components = {
     //<div className="mx-8">
       <pre
         className={cn(
-          "mb-4 mt-6 rounded-lg bg-black py-4 scroll overflow-auto w-screen max-w-3xl",
+          "mb-4 mt-6 rounded-lg bg-black py-4 scroll overflow-auto max-w-3xl",
           className
         )}
         {...props}
@@ -126,7 +126,7 @@ const components = {
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={cn(
-        "px-[0.3rem] py-[0.2rem] font-mono text-sm mx-6",
+        "px-[0.3rem] py-[0.2rem] font-mono text-sm px-4",
         className
       )}
       {...props}

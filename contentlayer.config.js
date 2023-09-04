@@ -120,24 +120,13 @@ export default makeSource({
     rehypePlugins: [
       rehypeSlug,
       [
-        rehypePrettyCode,
+      rehypePrettyCode, 
         {
-          theme: "github-dark",
-          onVisitLine(node) {
-            if (node.children.length === 0) {
-              node.children = [{ type: "text", value: " " }]
-            }
-          },
-          onVisitHighlightedLine(node) {
-            node.properties.className.push("line--highlighted")
-          },
-          onVisitHighlightedWord(node) {
-            node.properties.className = ["word--highlighted"]
-          },
-        },
+          theme: "github-dark"
+        }
       ],
       [
-        rehypeAutolinkHeadings,
+      rehypeAutolinkHeadings,
         {
           properties: {
             className: ["subheading-anchor"],
@@ -145,6 +134,32 @@ export default makeSource({
           },
         },
       ],
+      // [
+        
+      //   {
+      //     theme: "github-dark",
+      //     onVisitLine(node) {
+      //       if (node.children.length === 0) {
+      //         node.children = [{ type: "text", value: " " }]
+      //       }
+      //     },
+      //     onVisitHighlightedLine(node) {
+      //       node.properties.className.push("line--highlighted")
+      //     },
+      //     onVisitHighlightedWord(node) {
+      //       node.properties.className = ["word--highlighted"]
+      //     },
+      //   },
+      // ],
+      // [
+      //   rehypeAutolinkHeadings,
+      //   {
+      //     properties: {
+      //       className: ["subheading-anchor"],
+      //       ariaLabel: "Link to section",
+      //     },
+      //   },
+      // ],
     ],
   },
 })
