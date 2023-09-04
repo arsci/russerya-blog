@@ -106,27 +106,42 @@ const components = {
     />
   ),
   pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => (
-    <pre
-      className={cn(
-        "mb-6 mt-6 rounded-lg relative border bg-black py-6 scroll overflow-scroll w-full px-6",
-        className
-      )}
-      {...props}
-    />
+    //<div className="mx-8">
+      <pre
+        className={cn(
+          "mb-4 mt-6 rounded-lg bg-black py-4 scroll overflow-auto w-screen max-w-3xl",
+          className
+        )}
+        {...props}
+      />
+    //</div>
+    // <pre
+    //   className={cn(
+    //     "mb-6 mt-6 rounded-lg relative border bg-black py-6 scroll overflow-scroll w-screen px-6 max-w-3xl max-w-2xl",
+    //     className
+    //   )}
+    //   {...props}
+    // />
   ),
-  code: ({ className, ...props }: React.HTMLAttributes<HTMLBodyElement>) => (
+  code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={cn(
-        "rounded-md font-mono text-sm scroll overflow-scroll",
+        "px-[0.3rem] py-[0.2rem] font-mono text-sm mx-6",
         className
       )}
       {...props}
     />
+    // <code
+    //   className={cn(
+    //     "rounded-md font-mono text-sm scroll overflow-scroll",
+    //     className
+    //   )}
+    //   {...props}
+    // />
   ),
   Image,
   Callout,
   Card: MdxCard,
-  //CodeBlock,
 }
 
 interface MdxProps {

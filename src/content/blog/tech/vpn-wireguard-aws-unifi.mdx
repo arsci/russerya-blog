@@ -31,7 +31,7 @@ gateway, would connect to.
 I chose AWS Lightsail primarily for cost purposes. If I had additional AWS resources I needed 
 access to over my VPN I likely would have chosen a standard EC2 instance. For this purpose, the 
 cost of an EC2 instance was no match to AWS Lightsail. AWS offers the first 3 months for free for
-new accounts, and **data is included**. 
+new accounts, and **data is included**.  
 
 On a small instance size you get:
 
@@ -52,7 +52,7 @@ The data transfer is what really makes this more cost effective than running a r
 Once I chose Lightsail, it was time to setup my server. I chose the settings and configurations I wanted
 and setup my Terraform code to deploy my instance to a fresh AWS account.
 
-```hcl
+```text
 resource "aws_lightsail_instance" "wireguard" {
   name              = "wireguard"
   availability_zone = "us-west-2b"
@@ -73,7 +73,7 @@ IP addresses so our mobile devices could connect outside my home network.
 I also added a security group to allow SSH access from my home network and VPN to configure the server. Unfortunately 
 Lightsail is fairly limited so fully automating the setup wasn't feasible, but for this situation a manual setup was fine.
 
-```hcl
+```text
   resource "aws_lightsail_instance_public_ports" "vpn_port" {
     instance_name = aws_lightsail_instance.wireguard.name
 
@@ -97,7 +97,7 @@ Then finally I setup a static IP, and added a Route53 DNS record to point to it.
 configurations and if I ever need to move my server to a new account, VPC, etc where I lose the static IP, I won't have
 to update every client.
 
-```hcl
+```
   resource "aws_lightsail_static_ip" "vpn_ip" {
     name = "vpn-static-ip"
   }

@@ -235,7 +235,7 @@ With the Mac app installed and the ESP added to Home Assistant, the only compone
 
 ### Activate The Meeting Light
 
-```text
+```yaml
 alias: "Meeting In Progress [Activate]"
 description: "Activate the meeting light when the webcam turns on"
 trigger:
@@ -286,8 +286,7 @@ and the light is active (since I can't see it from my desk).
 
 And finally when the meeting ends and my camera turns off, I need the meeting light to automatically deactivate:
 
-```text
-
+```yaml
 alias: "Meeting In Progress [Deactivate]"
 description: "Deactivate the meeting light when the webcam turns on"
 trigger:
@@ -334,7 +333,7 @@ to the wall in the kitchen on the 2nd floor and will act as a secondary indicati
 
 ---
 
-```text
+```yaml
 type: conditional
   conditions:
     - entity: select.wled_meeting_light_preset

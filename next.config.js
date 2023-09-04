@@ -5,7 +5,8 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   experimental: {
-    mdxRs: false, // <- disabled
+    appDir: true,
+    serverComponentsExternalPackages: ["@prisma/client"],
   },
 };
 
