@@ -116,13 +116,11 @@ export default async function Post({ params }: { params: { slug: string } }) {
       <div className="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto mb-20">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="sm:px-8 mt-8">
-            {/* <div className='flex justify-center mx-auto'> */}
               <article>
                 <div className='mt-8'>
                   <Mdx code={post.body.code} />
                 </div>
               </article>
-            {/* </div> */}
           </div>
         </div>
       </div>
