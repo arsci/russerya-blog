@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+@layer base{
+  body {
+       @apply dark:bg-gray-800 bg-white flex flex-col min-h-screen
+  }
+}
+
+.lines {
+  @apply border-gray-200 dark:border-gray-600
+}
+
+.blog-landing {
+  @apply dark:text-gray-100 text-gray-800
+}
+
+.category-icons {
+  @apply relative z-10 rounded-full bg-gray-200 dark:bg-gray-600 px-3 py-1.5 font-medium text-gray-600 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-900
+}
+
+.inline-links {
+  @apply text-gray-400 hover:text-gray-500 dark:hover:text-gray-300
+}
+
+.blog-image-full {
+  @apply h-auto rounded-md transition-shadow duration-300 ease-in-out shadow-lg hover:shadow-black/30 w-full
+}
+
+.blog-image-qt {
+  @apply h-auto rounded-md transition-shadow duration-300 ease-in-out shadow-lg hover:shadow-black/30 w-1/4
+}
