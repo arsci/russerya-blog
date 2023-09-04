@@ -106,38 +106,22 @@ const components = {
     />
   ),
   pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => (
-    //<div className="mx-8">
-      <pre
-        className={cn(
-          "mb-4 mt-6 rounded-lg bg-black py-4 scroll overflow-auto max-w-3xl",
-          className
-        )}
-        {...props}
-      />
-    //</div>
-    // <pre
-    //   className={cn(
-    //     "mb-6 mt-6 rounded-lg relative border bg-black py-6 scroll overflow-scroll w-screen px-6 max-w-3xl max-w-2xl",
-    //     className
-    //   )}
-    //   {...props}
-    // />
-  ),
-  code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <code
+    <pre
       className={cn(
-        "px-[0.3rem] py-[0.2rem] font-mono text-sm px-4",
+        "mb-4 mt-6 overflow-x-auto rounded-lg border bg-black py-4",
         className
       )}
       {...props}
     />
-    // <code
-    //   className={cn(
-    //     "rounded-md font-mono text-sm scroll overflow-scroll",
-    //     className
-    //   )}
-    //   {...props}
-    // />
+  ),
+  code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <code
+      className={cn(
+        "relative rounded px-[0.8rem] py-[0.2rem] font-mono text-sm",
+        className
+      )}
+      {...props}
+    />
   ),
   Image,
   Callout,

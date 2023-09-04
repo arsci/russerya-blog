@@ -189,19 +189,19 @@ PostUp = wg set %i private-key /etc/wireguard/%i.key
 Address = 10.100.105.1/24
 ListenPort = 51821
 DNS = 10.5.5.192
-PostUp   = iptables...
-PostDown = iptables...
-
+PostUp   = iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE 
+PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE 
+  
 # Pixel 5
 [Peer]
 PublicKey = <key>
 AllowedIPs = 10.100.105.2/32 
-
+  
 # UDM
 [Peer]
 PublicKey = <key>
 AllowedIPs = 10.0.0.0/11, 10.100.105.3/32 
-
+  
 # MacBook
 [Peer]
 PublicKey = <key>
@@ -261,7 +261,7 @@ Address = 10.100.105.3/24
 ListenPort = 51821
 DNS = 10.5.5.192, 8.8.8.8
 PostUp = ping -c 1 10.100.105.1
-
+  
 [Peer]
 PublicKey = <Lightsail public key> 
 Endpoint = <dns-endpoint>:51821
