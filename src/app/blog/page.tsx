@@ -35,7 +35,7 @@ export default function Home() {
                     href="/blog"
                     className="category-icons"
                   >
-                    blog
+                    {post.category}
                   </a>
                 </div>
                 <div className="group relative mb-20">
