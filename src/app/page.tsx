@@ -47,7 +47,7 @@ export default function Home() {
                 })}
               </time>
                 <a
-                  href={latestTechPost.category}
+                  href={"blog/"}
                   className="category-icons"
                 >
                   {latestTechPost.category}
@@ -76,7 +76,7 @@ export default function Home() {
                 })}
               </time>
                 <a
-                  href={latestVanPost.category}
+                  href={"blog/" + latestVanPost.category}
                   className="category-icons"
                 >
                   {latestVanPost.category}
@@ -105,7 +105,7 @@ export default function Home() {
                 })}
               </time>
                 <a
-                  href={latestHomePost.category}
+                  href={"blog/" + latestHomePost.category}
                   className="category-icons"
                 >
                   {latestHomePost.category}
