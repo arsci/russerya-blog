@@ -4,7 +4,7 @@ import * as Nav from './Navigation'
 import { DarkModeSwitcher } from './DarkMode'
 import { Disclosure } from '@headlessui/react'
 import React, { useState } from 'react';
-import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
 
 export default function Header() {
 

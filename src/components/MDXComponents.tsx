@@ -5,6 +5,9 @@ import { cn } from "@/utils/utils"
 import { Callout } from "@/components/Callout"
 import { MdxCard } from "@/components/MDXCard"
 import { getMDXComponent } from "next-contentlayer/hooks"
+import { NewsletterFormStacked } from "./Newsletter"
+import { NewsletterSeries } from "./Newsletter"
+import { NewsletterCurious } from "./Newsletter"
 
 const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -126,6 +129,9 @@ const components = {
   Image,
   Callout,
   Card: MdxCard,
+  NewsletterFormStacked,
+  NewsletterSeries,
+  NewsletterCurious,
 }
 
 interface MdxProps {

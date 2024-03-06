@@ -1,4 +1,6 @@
+'use client'
 import * as Socials from './LinksAndIcons'
+import { NewsletterMain } from './Newsletter'
   
 export default function Footer() {
   return (
@@ -11,6 +13,8 @@ export default function Footer() {
           <span className="bg-white px-2 text-sm text-gray-500" />
         </div>
       </div>
+      <NewsletterMain />
+      <div className="w-full border-t lines mt-10" />
       <div className="mt-10 flex justify-center space-x-10">
         {Socials.socials.map((item) => (
           <a key={item.name} href={item.href} target={item.target} className="text-gray-500 dark:text-gray-300">

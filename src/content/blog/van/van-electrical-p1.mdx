@@ -1,0 +1,94 @@
+---
+title: "Electrical Series Part 1: Design and Planning"
+author: "Ryan Russell"
+date: "2024-03-05"
+category: "van"
+description: "A glimpse into the design and planning of the electrical system"
+ogImage: "van_electrical/part_1/electrical_diagram.png"
+---
+
+One of our areas of focus over the last few months has been the planning and design of the electrical system. We
+had many considerations to take into account to design a system that would meet all of our needs - everything 
+from the voltage, capacity, methods of charging, control systems, all the way down to
+the individual components and how all of them would be connected. 
+
+<NewsletterSeries />
+
+## Electrical System
+
+The first major decision we needed to make was whether we wanted to use a pre-packaged, out-of-the-box power system or design and build
+it ourselves from individual components. 
+
+Companies like EcoFlow sell all-in-one power module kits that generally come with everything you would need for an off-grid electrical system.
+It includes the batteries, wiring, a variety of charging options (solar, alternator, shore) and battery sizes, all while being plug-and-play. These systems can be great
+for getting up and running quickly, are expandable, and other than choosing the right capacity require very few calculations or technical considerations when buying and installing.
+
+After researching a few of these options we decided to design and build the electrical system ourselves. My background is electrical engineering so half the
+fun of this whole process is the design and build, and doing so would give us the ability to customize every single detail to meet our exact needs. The cost was also a large factor
+in this decision - the EcoFlow kit that would be most comparable to the system we ended up designing starts at over $13,000, and that is just for the batteries and power
+management system. Building the system ourselves out of the individual components will end up saving us thousands of dollars.
+
+## Voltage
+
+After selecting what type of system we wanted, we needed to determine what voltage we to base our build on. Ultimately the higher the voltage, the more
+efficient the system would be. We debated between 3 options: 48v, 24v, and 12v. As the voltage increases the
+wire size we need to use decreases, in addition to there being less voltage drop across each wire run. However components for 48v and 24v
+systems are not as common as 12v, since that's what most vehicles are based on so as the voltage increases, 
+so does the cost and complexity of the system. Thankfully, with the increased popularity of mobile power
+systems and newer battery technologies, higher voltage systems are starting to become more readily available at reasonable prices. In the end we had
+to balance the availability of components our budget could accommodate, with the advantages of a higher voltage system and selected a
+24v system.
+
+We were able to find a Renogy 100ah 24v Lithium Iron Phosphate (LiFePO4) battery that was very reasonably priced.
+
+<br />
+
+<Image
+  src="/images/blog/van/van_electrical/part_1/renogy.jpg"
+  width="1000"
+  height="0"
+  alt="renogy_battery"
+  className="blog-image-full"
+/>
+
+## Capacity
+
+Next up was selecting how much capacity (ah) we would need from our electrical system. Our initial goal is to be able to support two to three week long trips
+in the van where both of us are able to work. This means we need to be able to supply sufficient power to laptops, internet connectivity (cell booster, potentially 
+a router, starlink, etc), lights, and comfort (fans, AC) in addition to regular life activities such as cooking (heat, refrigeration), reading, relaxing, etc. 
+
+In our designs so far we've located the primary kitchen space in the garage area under the bed that pulls out from the rear doors (with a propane stove). In the 
+future when we add an inverter charger unit we would like to have a small portable induction cooktop to use inside the van as well. 
+
+We wanted to size the system to be able to run the air conditioner during the day if we ever needed to leave our dog inside. 
+
+With all of that taken into consideration we started looking at how much space we had, and found that we could very easily fit four of the Renogy 24v 100ah batteries
+in the utility area that we designed. 
+
+## Charging
+
+We selected 2 primary methods of charging to support in our initial build: solar and alternator charging. We plan to add shore power charging with an inverter/charger, 
+but it is currently not a top priority and something that will likely be adding later.
+
+### Solar
+
+Solar charging will be the primary method of charging the battery bank. We designed the roof layout to be able accommodate 2 types of panels in a series-parallel
+configuration that will provide up to 360W of power. The panels will be mounted around the other roof accessories ([check out the roof layout here!](/blog/van/roof-layout))
+and will be managed by a Victron SmartSolar MPPT charge controller.
+
+In addition to the rooftop solar, our system will be capable of utilizing a ground deploy solar array that will be managed by a separate Victron SmartSolar MPPT charge
+controller. We will have a plug located on the side of the van where an additional array can be plugged in. We are looking at using a 
+[Renogy 400W foldable solar array](https://www.renogy.com/renogy-400w-portable-solar-panel-foldable-monocrystalline-solar-blanket/), which would
+give us a total of 760W of possible solar charging capacity.
+
+### Alternator Charging
+
+DC-DC Charging
+
+### Shore Power
+
+Shore power charging
+
+## Converting Voltage
+
+
