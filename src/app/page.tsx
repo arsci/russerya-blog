@@ -136,8 +136,8 @@ export default function Home() {
         <div className="mx-auto mt-2 grid max-w-2xl grid-cols-1 lines pt-2 sm:pt-6 lg:mx-0 lg:max-w-none mb-16">
           <p>
             I created this blog as a platform to share my adventures in tech, automobiles, and home improvement. Whether you&apos;re a fellow engineer, a gearhead, a DIYer, or just someone curious about these worlds, I hope you find something here that sparks your interest. Enjoy exploring, and feel free to connect with me on 
-            <Link href={"https://linkedin.com/in/russerya/"}> LinkedIn </Link>and 
-            <Link href={"https://github.com/arsci/"}> GitHub</Link>!
+            <Link href={"https://linkedin.com/in/russerya/"} className="inline-links"> LinkedIn </Link>and 
+            <Link href={"https://github.com/arsci/"} className="inline-links"> GitHub</Link>!
           </p>
         </div>
       </div>

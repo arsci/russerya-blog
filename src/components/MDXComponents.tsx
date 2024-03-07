@@ -10,6 +10,13 @@ import { NewsletterSeries } from "./Newsletter"
 import { NewsletterCurious } from "./Newsletter"
 
 const components = {
+  a: ({ className, ...props }: React.HTMLAttributes<HTMLLinkElement>) => (
+    <a className={cn(
+      "inline-links"
+      )}
+      {...props}
+    />
+  ),
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
