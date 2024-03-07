@@ -9,7 +9,7 @@ export default function Home() {
     });
     
   return (
-    <div className="py-24 sm:py-32">
+    <div className="py-14 sm:py-16">
       <div className="mx-auto max-w-5xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2 className="text-3xl font-bold tracking-tight blog-index sm:text-4xl">Van Build</h2>
