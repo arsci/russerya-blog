@@ -59,7 +59,7 @@ export default function Home() {
                 <div className="flex justify-center grid-cols-1">
                   <ul role="list" className="-mb-8 mx-6">
                     {certs && certs.map((z) => (
-                      <li className="mt-1 li-bullet text-lg">{z}</li>
+                      <li key={z} className="mt-1 li-bullet text-lg">{z}</li>
                     ))}
                   </ul>
                 </div>
@@ -73,14 +73,14 @@ export default function Home() {
                   <div className="flex items-center justify-center grid-cols-1">
                     <ul role="list" className="-mb-8 mx-6">
                       {languages1 && languages1.map((z) => (
-                        <li className="mt-1 li-bullet">{z}</li>
+                        <li key={z} className="mt-1 li-bullet">{z}</li>
                       ))}
                     </ul>
                   </div>
                   <div className="flex justify-center grid-cols-1">
                     <ul role="list" className="-mb-8 mx-6">
                       {languages2 && languages2.map((z) => (
-                        <li className="mt-1 li-bullet">{z}</li>
+                        <li key={z} className="mt-1 li-bullet">{z}</li>
                       ))}
                     </ul>
                   </div>
@@ -95,14 +95,14 @@ export default function Home() {
                   <div className="flex justify-center grid-cols-1">
                     <ul role="list" className="-mb-8 mx-6">
                       {aws && aws.map((z) => (
-                        <li className="mt-1 li-bullet">{z}</li>
+                        <li key={z} className="mt-1 li-bullet">{z}</li>
                       ))}
                     </ul>
                   </div>
                   <div className="flex justify-right grid-cols-1">
                     <ul role="list" className="-mb-8 mx-6">
                       {skills && skills.map((z) => (
-                        <li className="mt-1 li-bullet">{z}</li>
+                        <li key={z} className="mt-1 li-bullet">{z}</li>
                       ))}
                     </ul>
                   </div>
