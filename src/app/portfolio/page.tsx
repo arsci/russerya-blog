@@ -26,7 +26,7 @@ export default function Home() {
                 <p>Ryan now works as an independent consultant, working closely with technology companies to design and build out critical infrastructure in AWS.</p>
               </div>
               <div className="mt-4">
-                <p>In January of 2024 he launched Bright Wrench Design, a small online shop for hobby items that he's created.</p>
+                <p>In January of 2024 he launched Bright Wrench Design, a small online shop for hobby items that he&apos;s created.</p>
               </div>
             </div>
           </div>
@@ -125,13 +125,13 @@ export default function Home() {
                       <div className="relative flex space-x-3 grid-cols-2">
                         <div>
                           { event.icon && <span
-                            className='dark:bg-gray-300 bg-gray-900 h-8 w-8 rounded-full flex items-center justify-center'
+                            className="dark:bg-gray-300 bg-gray-900 h-8 w-8 rounded-full flex items-center justify-center"
                           >
                             {<event.icon className="h-5 w-5 text-white dark:text-black" aria-hidden="true" />}
                           </span>}
 
                           { !event.icon && <span
-                            className='bg-black dark:bg-white my-2 mx-2.5 h-3 w-3 rounded-full flex items-center justify-center'
+                            className="bg-black dark:bg-white my-2 mx-2.5 h-3 w-3 rounded-full flex items-center justify-center"
                           >
                             {<div className="h-5 w-5 text-white" aria-hidden="true" />}
                           </span>}
@@ -139,13 +139,13 @@ export default function Home() {
                         </div>
                         <div className="grid">
                           <div className="grid-rows-1 text-lg text-left font-bold">
-                              { event.href && <a href={event.href} target="_blank" className="inline-links">{event.company}</a> } { !event.href && <span>{event.company}</span> } {event.location && <span className='text-md font-normal mx-2'>|</span>} {event.location && <span className='text-sm font-normal mx-0'>{event.location}{' '}</span>}
+                              { event.href && <a href={event.href} target="_blank" className="inline-links">{event.company}</a> } { !event.href && <span>{event.company}</span> } {event.location && <span className="text-md font-normal mx-2">|</span>} {event.location && <span className="text-sm font-normal mx-0">{event.location}{" "}</span>}
                           </div>
                           <div className="grid-rows-1 whitespace-nowrap text-left text-medium dark:text-gray-300 text-gray-600">
                             <time dateTime={event.datetime}>{event.date}</time>
                           </div>
                           <div className="grid-rows-1 text-left text-medium dark:text-gray-300 text-gray-600">
-                            {event.title}{' '}
+                            {event.title}{" "}
                           </div>
                           <div className="grid-rows-1 text-md dark:text-gray-300 text-gray-600 mt-2 flex-wrap">
                             <p>
