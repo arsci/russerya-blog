@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import * as Nav from './Navigation'
 import { DarkModeSwitcher } from './DarkMode'
 import { Disclosure } from '@headlessui/react'
@@ -22,10 +23,12 @@ export default function Header() {
             <div className="flex h-16 justify-between">
                 <div className="flex flex-shrink-0 items-center">
                   <Link href="/">
-                    <img
-                      className="inline-block h-10 w-10 rounded-full"
+                    <Image 
                       src="/favicon.ico"
-                      alt=""
+                      width={100}
+                      height={100}
+                      alt="favicon"
+                      className="inline-block h-10 w-10 rounded-full"
                     />
                   </Link>
                   <nav className="flex -mb-6 sm:ml-6 columns-2 sm:flex sm:justify-center sm:space-x-8 px-2" aria-label="Header">

@@ -155,7 +155,7 @@ export default function Home() {
                           <div className="grid-rows-1 text-sm dark:text-gray-300 text-gray-600 mt-2 flex-wrap">
                             <ul>
                               {event.bullets && event.bullets.map((z) => (
-                                <li className="mt-1 li-bullet">{z}</li>
+                                <li key={z} className="mt-1 li-bullet">{z}</li>
                               ))}
                             </ul>
                           </div>
