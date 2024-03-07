@@ -7,9 +7,12 @@ function classNames(...classes: any[]) {
 
 export default function Home() {
   return (
-    <div className="py-24 sm:py-32">
+    <div className="py-14 sm:py-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="font-bold text-3xl text-left mb-8">
+        <div className="font-bold text-3xl text-left mb-2">
+          Ryan Russell
+        </div>
+        <div className="font-bold text-xl text-left mb-8">
           Cloud Specialist, DevOps Guru, Hobbyist
           <div className="w-full border-2 lines mt-4" />
         </div>
@@ -20,7 +23,7 @@ export default function Home() {
                 <p>Ryan is an experienced cloud engineer based out of Sacramento, CA. He has extensive experience with AWS and has spent the majority of his professional career improving and honing his skills.</p>
               </div>
               <div className="mt-4">
-                <p>He spend 3 years working as a consultant for Slalom and gained a lot of experience working with a wide range of clients across several regulated industries.</p>
+                <p>He spent 3 years as a consultant for Slalom and gained a lot of experience working with a wide range of clients across several regulated industries.</p>
               </div>
               <div className="mt-4">
                 <p>Ryan now works as an independent consultant, working closely with technology companies to design and build out critical infrastructure in AWS.</p>
