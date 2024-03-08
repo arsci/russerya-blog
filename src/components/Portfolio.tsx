@@ -74,7 +74,7 @@ export const timeline = [
     datetime: '2022-10-01',
     icon: LifebuoyIcon,
     bullets: [
-      "Led engineering work for the Infrastructure as Code Library. Built new Terraform modules, implemented new features to existing modules, and led regular maintenance and upgrades on existing IaC components.",
+      "Led engineering work for the Infrastructure as Code Library. Built new Terraform modules, implemented new features to existing modules, and organized regular maintenance and upgrades on existing IaC components.",
       "Contributed to open source projects such as cloud-nuke, terragrunt, and terratest",
       "Worked closely with customers and other engineers across multiple time zones in a fully remote environment."
     ]

@@ -1,10 +1,6 @@
 import { QuestionMarkCircleIcon, BuildingOffice2Icon, SunIcon, WrenchScrewdriverIcon, ComputerDesktopIcon } from '@heroicons/react/20/solid'
 import { timeline, certs, languages1, languages2, aws, skills } from '@/components/Portfolio'
 
-function classNames(...classes: any[]) {
-  return classes.filter(Boolean).join(' ')
-}
-
 export default function Home() {
   return (
     <div className="py-14 sm:py-16">
@@ -37,8 +33,8 @@ export default function Home() {
             <div className="flex items-center justify-center">
               <QuestionMarkCircleIcon className="h-16 mb-6 items-center justify-center" />
             </div>
-            <p className="text-lg font-bold text-center mb-2">Looking for help with AWS or DevOps?</p>
-            <p className="text-center mb-4">I am available on an hourly basis for cloud engineering, AWS architecture, and DevOps work</p>
+            <p className="text-lg font-bold text-center mb-2">Looking for an AWS Pro?</p>
+            <p className="text-center mb-4">I am available on an hourly basis for cloud engineering, AWS architecture, and DevOps related projects!</p>
             <div className="flex justify-center">
               <a href="https://calendly.com/ryan-brightwrenchdesign/30min" target="_blank">
                 <button
