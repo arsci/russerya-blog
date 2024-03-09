@@ -49,7 +49,7 @@ export const skills = [
   "Linux",
   "Docker",
   "JIRA",
-  "Creating effective documentation",
+  "Documentation",
   "3D Printing"
 ]
 

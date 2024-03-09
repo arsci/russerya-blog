@@ -1,17 +1,15 @@
 'use client'
+import { ArrowPathIcon } from '@heroicons/react/20/solid'
 import { useRef, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 
 export function NewsletterFormStacked() {
 
   const [status, setStatus] = useState<string | null>(null)
-  const [token, setToken] = useState("");
-  const [refreshReCaptcha, setRefreshReCaptcha] = useState(false);
-  const recaptcha = useRef()
-
   const referrer = useSearchParams().get('referrer') || 'unknown/direct'
 
   const handleSubmit = async (event: { preventDefault: () => void; target: any; }) => {
+    setStatus("PENDING")
     event.preventDefault()
     const form = event.target
 
@@ -38,15 +36,10 @@ export function NewsletterFormStacked() {
 
       setStatus("ERROR")
     } catch (err) {
-      setRefreshReCaptcha(!refreshReCaptcha);
       console.log(err);
       setStatus("ERROR")
     }
   }
-
-  const setTokenFunc = (getToken: any) => {
-    setToken(getToken);
-  };
 
   return (
     <div className="mt-4 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -65,6 +58,7 @@ export function NewsletterFormStacked() {
                 required
                 className="relative block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 placeholder="Email address"
+                disabled={status === "SUCCESS"}
               />
             </div>
           </div>
@@ -91,13 +85,25 @@ export function NewsletterFormStacked() {
               </button>
             </>
           )}
+          {status === "PENDING" && (
+            <>
+              <button
+                disabled={true}
+                type="submit"
+                className="flex w-full justify-center rounded-md bg-indigo-200 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                <ArrowPathIcon className="h-6 items-center justify-center" />
+              </button>
+            </>
+          )}
           {status === "ERROR" && (
             <>
               <button
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Oops, we encountered an error. Please try again.
+                Oops! Either you're already subscribed,<br />
+                or there was another failure. You may try again.
               </button>
             </>
           )}

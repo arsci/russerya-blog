@@ -1,17 +1,33 @@
 import { QuestionMarkCircleIcon, BuildingOffice2Icon, SunIcon, WrenchScrewdriverIcon, ComputerDesktopIcon } from '@heroicons/react/20/solid'
 import { timeline, certs, languages1, languages2, aws, skills } from '@/components/Portfolio'
+import * as Socials from '@/components/LinksAndIcons'
 
 export default function Home() {
+
   return (
     <div className="py-14 sm:py-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="font-bold text-3xl text-left mb-2">
-          Ryan Russell
-        </div>
-        <div className="font-bold text-xl text-left mb-8">
-          Cloud Specialist, DevOps Guru, Hobbyist
-          <div className="w-full border-2 lines mt-4" />
-        </div>
+          <div className="grid grid-cols-2">
+            <div className='grid-cols-1'>
+              <div className="grid grid-rows-1 font-bold text-3xl text-left mb-2">
+                Ryan Russell
+              </div>
+              <div className="grid-rows-1 font-bold text-xl text-left">
+                AWS Specialist, DevOps Guru, Hobbyist
+              </div>
+            </div>
+            <div className='grid-cols-1'>
+              <div className='flex justify-end items-center space-x-10 mt-3'>
+                {Socials.portfolio.map((item) => (
+                  <a key={item.name} href={item.href} target={item.target} className="text-gray-500 dark:text-gray-300">
+                    <span className="sr-only">{item.name}</span>
+                    <item.icon className="h-12 w-12" aria-hidden="true" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        <div className="w-full border-2 lines mt-4 mb-8" />
         <div className="grid sm:grid-cols-1 md:grid-cols-2 mb-16 gap-12 items-center justify-center">
           <div className="grid-cols-1 mb-1">
             <div className="flow-root">
@@ -34,9 +50,9 @@ export default function Home() {
               <QuestionMarkCircleIcon className="h-16 mb-6 items-center justify-center" />
             </div>
             <p className="text-lg font-bold text-center mb-2">Looking for an AWS Pro?</p>
-            <p className="text-center mb-4">I am available on an hourly basis for cloud engineering, AWS architecture, and DevOps related projects!</p>
+            <p className="text-center mb-4">I am available for AWS Cloud and DevOps related projects!</p>
             <div className="flex justify-center">
-              <a href="https://calendly.com/ryan-brightwrenchdesign/30min" target="_blank">
+              <a href={process.env.NEXT_PUBLIC_CONSULT_URI} target="_blank">
                 <button
                   className="flex w-full justify-center rounded-md bg-indigo-600 px-10 py-3 font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
@@ -56,28 +72,28 @@ export default function Home() {
                 </div>
                 <p className="text-3xl font-bold text-center mb-7">Certifications & Training</p>
                 <div className="flex justify-center grid-cols-1">
-                  <ul role="list" className="-mb-8 mx-6">
+                  <ul role="list" className="mx-6">
                     {certs && certs.map((z) => (
                       <li key={z} className="mt-1 li-bullet text-lg">{z}</li>
                     ))}
                   </ul>
                 </div>
               </div>
-              <div className="relative max-w-lg">
+              <div className="relative max-w-xl">
                 <div className="flex justify-center">
-                  <ComputerDesktopIcon className="h-12 mb-8 mt-20" />
+                  <ComputerDesktopIcon className="h-12 mb-8 mt-10" />
                 </div>
                 <p className="text-3xl font-bold text-center mb-7">Languages</p>
                 <div className="grid grid-cols-2">
-                  <div className="flex items-center justify-center grid-cols-1">
-                    <ul role="list" className="-mb-8 mx-6">
+                  <div className="flex items-center justify-end grid-cols-1">
+                    <ul role="list" className="mx-6">
                       {languages1 && languages1.map((z) => (
                         <li key={z} className="mt-1 li-bullet">{z}</li>
                       ))}
                     </ul>
                   </div>
-                  <div className="flex justify-center grid-cols-1">
-                    <ul role="list" className="-mb-8 mx-6">
+                  <div className="flex flex-wrap justify-center grid-cols-1">
+                    <ul role="list" className="">
                       {languages2 && languages2.map((z) => (
                         <li key={z} className="mt-1 li-bullet">{z}</li>
                       ))}
@@ -87,19 +103,19 @@ export default function Home() {
               </div>
               <div className="relative max-w-lg">
                 <div className="flex justify-center items-center">
-                  <WrenchScrewdriverIcon className="h-12 mb-8 mt-20" />
+                  <WrenchScrewdriverIcon className="h-12 mb-8 mt-10" />
                 </div>
                 <p className="text-3xl font-bold text-center mb-7">Tools & Skills</p>
                 <div className="grid grid-cols-2">
                   <div className="flex justify-center grid-cols-1">
-                    <ul role="list" className="-mb-8 mx-6">
+                    <ul role="list" className="">
                       {aws && aws.map((z) => (
                         <li key={z} className="mt-1 li-bullet">{z}</li>
                       ))}
                     </ul>
                   </div>
-                  <div className="flex justify-right grid-cols-1">
-                    <ul role="list" className="-mb-8 mx-6">
+                  <div className="flex justify-end flex-wrap grid-cols-1">
+                    <ul role="list">
                       {skills && skills.map((z) => (
                         <li key={z} className="mt-1 li-bullet">{z}</li>
                       ))}

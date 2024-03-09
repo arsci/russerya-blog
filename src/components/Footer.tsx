@@ -16,7 +16,7 @@ export default function Footer() {
       <NewsletterMain />
       <div className="w-full border-t lines mt-10" />
       <div className="mt-10 flex justify-center space-x-10">
-        {Socials.socials.map((item) => (
+        {Socials.footer.map((item) => (
           <a key={item.name} href={item.href} target={item.target} className="text-gray-500 dark:text-gray-300">
             <span className="sr-only">{item.name}</span>
             <item.icon className="h-6 w-6" aria-hidden="true" />

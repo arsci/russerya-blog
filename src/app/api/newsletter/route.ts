@@ -11,7 +11,6 @@ export async function POST(req: NextRequest) {
 	}
 
   const EO_LIST_ID = process.env.EO_LIST_ID;
-	const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY
 	const EO_KEY = process.env.EO_KEY;
   const EO_ENDPOINT = `https://emailoctopus.com/api/1.6/lists/${EO_LIST_ID}/contacts`;
 	const email = body.email;
