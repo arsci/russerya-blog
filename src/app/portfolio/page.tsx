@@ -41,7 +41,7 @@ export default function Home() {
                 <p>Ryan now works as an independent consultant, working closely with technology companies to design and build out critical infrastructure in AWS.</p>
               </div>
               <div className="mt-4">
-                <p>In January of 2024 he launched Bright Wrench Design, a small online shop for hobby items that he&apos;s created.</p>
+                <p>In January of 2024 he launched Bright Wrench Design, a small online shop for hobby items that he&#39;s created.</p>
               </div>
             </div>
           </div>
