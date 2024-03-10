@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import axios from 'axios';
 
 export async function POST(req: NextRequest) {
 	const body = await req.json();
@@ -15,34 +16,53 @@ export async function POST(req: NextRequest) {
   const EO_ENDPOINT = `https://emailoctopus.com/api/1.6/lists/${EO_LIST_ID}/contacts`;
 	const email = body.email;
 
-	const data = {
-		api_key: EO_KEY,
-		email_address: email,
-		fields: {
-			Referrer: body.referrer,
-		},
-		status: "SUBSCRIBED",
-	};
-
-	const requestOptions = {
-		crossDomain: true,
-		method: "POST",
-		headers: { "Content-type": "application/json" },
-		body: JSON.stringify(data),
-	};
+	const CAPTCHA_SECRET_KEY = process.env.CAPTCHA_SECRET_KEY
+	const CAPTCHA_ENDPOINT = `https://www.google.com/recaptcha/api/siteverify?secret=${CAPTCHA_SECRET_KEY}&response=${body.captchaValue}`
 
 	try {
-		const response = await fetch(EO_ENDPOINT, requestOptions);
-		if (!response.ok) {
-			throw new Error(`Failed to subscribe: ${response.statusText}`);
+
+		console.log(CAPTCHA_ENDPOINT)
+
+		const responseCaptcha = await axios.post(CAPTCHA_ENDPOINT)
+
+		console.log(responseCaptcha)
+
+		if(responseCaptcha.data.success) {
+
+			const data = {
+				api_key: EO_KEY,
+				email_address: email,
+				fields: {
+					Referrer: body.referrer,
+				},
+				status: "SUBSCRIBED",
+			};
+		
+			const requestOptions = {
+				crossDomain: true,
+				method: "POST",
+				headers: { "Content-type": "application/json" },
+				body: JSON.stringify(data),
+			};
+
+			const response = await fetch(EO_ENDPOINT, requestOptions);
+			if (!response.ok) {
+				throw new Error(`Failed to subscribe: ${response.statusText}`);
+			}
+			console.dir(await response.json());
+			return new NextResponse(
+				JSON.stringify({
+					data: response.status,
+				}),
+				{ status: 200 },
+			);
+		} else {
+			return new NextResponse(
+				JSON.stringify({ data: "An unknown error occurred" }),
+				{ status: 500 },
+			);
 		}
-		console.dir(await response.json());
-		return new NextResponse(
-			JSON.stringify({
-				data: response.status,
-			}),
-			{ status: 200 },
-		);
+
 	} catch (error: unknown) {
 		if (error instanceof Error) {
 			console.error(error.message);

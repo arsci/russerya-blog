@@ -51,6 +51,7 @@ export default function Home() {
       console.log(err);
       setStatus("ERROR")
     }
+    recaptcha.current.reset();
   }
   
   return (
@@ -320,13 +321,13 @@ export default function Home() {
                         <div className="mt-5 sm:mt-6">
                           {status === null && (
                             <>
+                              <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-6 mb-6" />
                               <button
                                 type="submit"
                                 className="g-recaptcha flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                               >
                                 Send
                               </button>
-                              <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} />
                               <button
                                 type="button"
                                 className="mt-2 inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
@@ -374,6 +375,7 @@ export default function Home() {
                           )}
                           {status === "ERROR" && (
                             <>
+                              <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-6 mb-6" />
                               <button
                                 type="submit"
                                 className="flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"

@@ -2,19 +2,31 @@
 import { ArrowPathIcon } from '@heroicons/react/20/solid'
 import { useRef, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
+import ReCAPTCHA from 'react-google-recaptcha'; 
 
 export function NewsletterFormStacked() {
 
+  const recaptcha = useRef(null) as any
   const [status, setStatus] = useState<string | null>(null)
   const referrer = useSearchParams().get('referrer') || 'unknown/direct'
+  const CAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_CAPTCHA_V2_SITE_KEY ?? ''
+
+  const [isCaptchaVisible, setCaptchaVisible] = useState(false);
+
+  function toggleCaptchaVisible() {
+    setCaptchaVisible(true)
+  }
 
   const handleSubmit = async (event: { preventDefault: () => void; target: any; }) => {
     setStatus("PENDING")
     event.preventDefault()
     const form = event.target
 
+    const captchaValue = recaptcha.current.getValue()
+
     const payload = {
       email: form.email.value,
+      captchaValue,
       referrer,
     }
 
@@ -59,6 +71,7 @@ export function NewsletterFormStacked() {
                 className="relative block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 placeholder="Email address"
                 disabled={status === "SUCCESS"}
+                onChange={toggleCaptchaVisible}
               />
             </div>
           </div>
@@ -66,6 +79,9 @@ export function NewsletterFormStacked() {
         <div>
           {status === null && (
             <>
+              {isCaptchaVisible && (
+                <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-6 mb-6" />
+              )}
               <button
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -98,6 +114,9 @@ export function NewsletterFormStacked() {
           )}
           {status === "ERROR" && (
             <>
+              {isCaptchaVisible && (
+                <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-6 mb-6" />
+              )}
               <button
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
