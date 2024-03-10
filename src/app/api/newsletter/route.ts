@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
   const EO_ENDPOINT = `https://emailoctopus.com/api/1.6/lists/${EO_LIST_ID}/contacts`;
 	const email = body.email;
 
-	const CAPTCHA_SECRET_KEY = process.env.CAPTCHA_SECRET_KEY
+	const CAPTCHA_SECRET_KEY = process.env.RECAPTCHA_V2_SECRET_KEY
 	const CAPTCHA_ENDPOINT = `https://www.google.com/recaptcha/api/siteverify?secret=${CAPTCHA_SECRET_KEY}&response=${body.captchaValue}`
 
 	try {
