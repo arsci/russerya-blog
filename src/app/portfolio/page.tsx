@@ -4,23 +4,28 @@ import { EnvelopeIcon } from '@heroicons/react/24/outline'
 import { timeline, certs, languages1, languages2, aws, skills } from '@/components/Portfolio'
 import * as Socials from '@/components/LinksAndIcons'
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
-
+import { Fragment, useState, useRef } from 'react'
+import ReCAPTCHA from 'react-google-recaptcha'; 
 
 export default function Home() {
-
+  const recaptcha = useRef(null) as any
   const [open, setOpen] = useState(false)
   const [status, setStatus] = useState<string | null>(null)
+  const CAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_CAPTCHA_V2_SITE_KEY ?? ''
 
   const handleSubmit = async (event: { preventDefault: () => void; target: any; }) => {
     setStatus("PENDING")
     event.preventDefault()
+
+    const captchaValue = recaptcha.current.getValue()
+
     const form = event.target
 
     const payload = {
       email: form.email.value,
       name: form.name.value,
-      message: form.comment.value
+      message: form.comment.value,
+      token: captchaValue
     }
 
     try {
@@ -317,10 +322,11 @@ export default function Home() {
                             <>
                               <button
                                 type="submit"
-                                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                className="g-recaptcha flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                               >
                                 Send
                               </button>
+                              <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} />
                               <button
                                 type="button"
                                 className="mt-2 inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"

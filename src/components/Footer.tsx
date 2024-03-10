@@ -1,6 +1,7 @@
 'use client'
 import * as Socials from './LinksAndIcons'
 import { NewsletterMain } from './Newsletter'
+import Script from 'next/script'
   
 export default function Footer() {
   return (
@@ -26,6 +27,7 @@ export default function Footer() {
       <p className="mt-10 mb-10 text-center text-xs leading-5 text-gray-500 dark:text-gray-300">
         &copy; {new Date().getFullYear()} Ryan Russell. All rights reserved.
       </p>
+      <Script src="https://www.google.com/recaptcha/api.js" async defer />
     </footer>
   )
 }
