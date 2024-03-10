@@ -41,16 +41,6 @@ to balance the availability of components our budget could accommodate, with the
 
 We were able to find a Renogy 100ah 24v Lithium Iron Phosphate (LiFePO4) battery that was very reasonably priced.
 
-<br />
-
-<Image
-  src="/images/blog/van/van_electrical/part_1/renogy.jpg"
-  width="1000"
-  height="0"
-  alt="renogy_battery"
-  className="blog-image-full"
-/>
-
 ## Capacity
 
 Next up was selecting how much capacity (ah) we would need from our electrical system. Our initial goal is to be able to support two to three week long trips
@@ -73,7 +63,7 @@ but it is currently not a top priority and something that will likely be adding 
 ### Solar
 
 Solar charging will be the primary method of charging the battery bank. We designed the roof layout to be able accommodate 2 types of panels in a series-parallel
-configuration that will provide up to 360W of power. The panels will be mounted around the other roof accessories ([check out the roof layout here!](/blog/van/roof-layout))
+configuration that will provide up to 360W of power. The panels will be mounted around the other roof accessories ([check out the roof layout here!](/blog/van/roof-layout-p1))
 and will be managed by a Victron SmartSolar MPPT charge controller.
 
 In addition to the rooftop solar, our system will be capable of utilizing a ground deploy solar array that will be managed by a separate Victron SmartSolar MPPT charge
@@ -83,12 +73,23 @@ give us a total of 760W of possible solar charging capacity.
 
 ### Alternator Charging
 
-DC-DC Charging
+To supplement the solar charging system, we will be able to charge off of the van alternator when the engine is running. In order to ensure we have enough charging capabilities
+in the event there is limited solar availability, we plan to install dual Victron Orion-TR 15A DC-DC Chargers. These chargers have a remote switch capability that will 
+allow us to turn one or both on/off as needed, this way we don't have to have the power load on the alternator all of the time.
 
 ### Shore Power
 
-Shore power charging
+Lastly for charging we plan to install a Victron Multiplus Inverter/Charger unit that will not only give us 120V capabilities inside the van, but also gives us the ability 
+to charge the system from 120V shore power input. We'll install a shore power plug in the side of the van (near the exterior solar array plug) where we can plug in if needed.
 
 ## Converting Voltage
 
+Since we have a 24v system, one of the big challenges is how we supply power to everything that is _not_ 24v (which is most of our devices). For the 
+air conditioner we were able to find a 24v compatible unit, so thankfully we do not need to run a high-power voltage converter for that, but for the 
+other DC devices we needed to figure out the best option. I really wanted 
+to stay away from using a single dedicated DC-DC power converter unit (like the [Victron Orion Converter](https://www.victronenergy.com/dc-dc-converters/orion-dc-dc-converters-12v-24v-48v-110v) for example). It would have taken up precious space in the garage area, would need to be manually 
+turned off and on when needed, and if we forgot to turn it off would still be sitting there consuming power.
 
+Instead we decided to use small buck converters for each device. These can be purchased in various ratings, so we can buy them specific to each devices needs. The units 
+are relatively small and can be placed along side each device, allowing us to take advantage of the 24v system for the longer wire runs (smaller gauge wire, and 
+less current). Since I recently purchased a 3D printer, [I'm able to print custom mounts and wire boxes for each space as well](https://shop.brightwrenchdesign.com/products/buck-converter-mounting-kit-w-junction-box-24v-12v-3d-printed-1).

@@ -98,6 +98,7 @@ const components = {
   ),
   a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
     <a
+      target="_blank"
       className={cn(
         "inline-links",
         className

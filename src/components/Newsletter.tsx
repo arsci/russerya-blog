@@ -80,7 +80,9 @@ export function NewsletterFormStacked() {
           {status === null && (
             <>
               {isCaptchaVisible && (
-                <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-11 mb-6" />
+                <div>
+                  <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-11 mb-6"/>
+                </div>
               )}
               <button
                 type="submit"
