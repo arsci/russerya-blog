@@ -321,7 +321,14 @@ export default function Home() {
                         <div className="mt-5 sm:mt-6">
                           {status === null && (
                             <>
-                              <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-6 mb-6" />
+                              <div>
+                                <div className='dark:hidden'>
+                                  <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-6 mb-6" />
+                                </div>
+                                <div className='hidden dark:block'>
+                                  <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-6 mb-6" theme='dark' />
+                                </div>
+                              </div>
                               <button
                                 type="submit"
                                 className="g-recaptcha flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -375,7 +382,14 @@ export default function Home() {
                           )}
                           {status === "ERROR" && (
                             <>
-                              <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-6 mb-6" />
+                              <div>
+                                <div className='dark:hidden'>
+                                  <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-6 mb-6" />
+                                </div>
+                                <div className='hidden dark:block'>
+                                  <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-6 mb-6" theme='dark' />
+                                </div>
+                              </div>
                               <button
                                 type="submit"
                                 className="flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"

@@ -81,7 +81,12 @@ export function NewsletterFormStacked() {
             <>
               {isCaptchaVisible && (
                 <div>
-                  <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-11 mb-6"/>
+                  <div className='dark:hidden'>
+                    <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-11 mb-6"/>
+                  </div>
+                  <div className='hidden dark:block'>
+                    <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-11 mb-6" theme='dark' />
+                  </div>
                 </div>
               )}
               <button
@@ -117,7 +122,14 @@ export function NewsletterFormStacked() {
           {status === "ERROR" && (
             <>
               {isCaptchaVisible && (
-                <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-11 mb-6" />
+                <div>
+                  <div className='dark:hidden'>
+                    <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-6 mb-6" />
+                  </div>
+                  <div className='hidden dark:block'>
+                    <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-6 mb-6" theme='dark' />
+                  </div>
+                </div>
               )}
               <button
                 type="submit"
