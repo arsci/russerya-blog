@@ -66,7 +66,7 @@ export default function Home() {
                 Ryan <br className="lg:hidden md:hidden sm:hidden" /> Russell
               </div>
               <div className="grid-rows-1 font-bold text-xl text-left">
-                AWS Specialist, DevOps Guru, Hobbyist
+                AWS Specialist, <br className="lg:hidden" />DevOps Guru, <br className="lg:hidden" />Hobbyist
               </div>
             </div>
             <div className='grid-cols-1'>
