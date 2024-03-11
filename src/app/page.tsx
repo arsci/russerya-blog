@@ -5,7 +5,6 @@ import { allTechPosts } from 'contentlayer/generated'
 import { allHomePosts } from 'contentlayer/generated'
 import imgVan from '@/images/img-van.jpg'
 import imgNala from '@/images/img-nala.jpg'
-import imgFocus from '@/images/img-focus.png'
 import imgBoard from '@/images/img-board.jpg'
 import clsx from 'clsx'
 import Image from "next/image"
@@ -145,17 +144,14 @@ export default function Home() {
 }
 
 function Photos() {
-  let rotations = ['rotate-2', '-rotate-2', 'rotate-2', '-rotate-2']
-
   return (
     <div className="mt-16 sm:mt-20">
       <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-        {[imgNala, imgFocus, imgBoard, imgVan].map((image, imageIndex) => (
+        {[imgNala, imgBoard, imgVan].map((image, imageIndex) => (
           <div
             key={image.src}
             className={clsx(
-              'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl',
-              rotations[imageIndex % rotations.length]
+              'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl'
             )}
           >
             <Image
