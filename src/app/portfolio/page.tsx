@@ -63,24 +63,24 @@ export default function Home() {
           <div className="grid grid-cols-2">
             <div className='grid-cols-1'>
               <div className="grid grid-rows-1 font-bold text-3xl text-left mb-2 flex-wrap">
-                Ryan <br className="lg:hidden md:hidden sm:hidden" /> Russell
+                Ryan Russell
               </div>
               <div className="grid-rows-1 font-bold text-xl text-left">
                 AWS Specialist, <br className="lg:hidden" />DevOps Guru, <br className="lg:hidden" />Hobbyist
               </div>
             </div>
             <div className='grid-cols-1'>
-              <div className='flex justify-end items-center space-x-10 mt-3'>
+              <div className='flex justify-end items-center sm:space-x-10 space-x-3 mt-3'>
                 {Socials.portfolio.map((item) => (
                   <a key={item.name} href={item.href} target={item.target} className="text-gray-500 dark:text-gray-300">
                     <span className="sr-only">{item.name}</span>
-                    <item.icon className="h-12 w-12" aria-hidden="true" />
+                    <item.icon className="h-7 w-7 sm:h-12 sm:w-12" aria-hidden="true" />
                   </a>
                 ))}
                 <a href='#'
                   onClick={() => setOpen(true)}
                 >
-                  <EnvelopeIcon className="menu h-12 items-center justify-center stroke-gray-500 dark:stroke-gray-300" />
+                  <EnvelopeIcon className="menu sm:h-12 h-7 items-center justify-center stroke-gray-500 dark:stroke-gray-300" />
                 </a>
               </div>
             </div>
