@@ -25,8 +25,11 @@ export default function Home() {
       email: form.email.value,
       name: form.name.value,
       message: form.comment.value,
+      referPage: 'portfolio',
       token: captchaValue
     }
+
+    console.log(payload)
 
     try {
       const response = await fetch('/api/contact', {
@@ -322,7 +325,7 @@ export default function Home() {
                           {status === null && (
                             <>
                               <div className="flex justify-center items-center mb-6">
-                                <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="g-recaptcha mx-6 mb-6" />
+                                <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="g-recaptcha" />
                               </div>
                               <button
                                 type="submit"
@@ -378,7 +381,7 @@ export default function Home() {
                           {status === "ERROR" && (
                             <>
                               <div className="flex justify-center items-center mb-6">
-                                <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="g-recaptcha mx-6 mb-6" />
+                                <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="g-recaptcha" />
                               </div>
                               <button
                                 type="submit"

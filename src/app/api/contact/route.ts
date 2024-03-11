@@ -18,6 +18,7 @@ export async function POST(req: NextRequest) {
       from_name: body.name,
       from_email: body.email,
       message: body.message,
+      referPage: body.referPage,
       'g-recaptcha-response': body.token
     }
   };
