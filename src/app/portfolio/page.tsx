@@ -264,10 +264,10 @@ export default function Home() {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-">
+              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white dark:dark:bg-gray-800 px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-">
                 <div>
                   <div className="mt-3 text-center sm:mt-5">
-                    <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
+                    <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900 dark:text-white">
                       Send me an message
                     </Dialog.Title>
                     <div className="mt-2">
@@ -321,17 +321,10 @@ export default function Home() {
                         <div className="mt-5 sm:mt-6">
                           {status === null && (
                             <>
-                              <div>
-                                <div className='dark:hidden'>
-                                  <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-6 mb-6" />
-                                </div>
-                                <div className='hidden dark:block'>
-                                  <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-6 mb-6" theme='dark' />
-                                </div>
-                              </div>
+                              <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-6 mb-6" />
                               <button
                                 type="submit"
-                                className="g-recaptcha flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                               >
                                 Send
                               </button>
@@ -382,14 +375,7 @@ export default function Home() {
                           )}
                           {status === "ERROR" && (
                             <>
-                              <div>
-                                <div className='dark:hidden'>
-                                  <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-6 mb-6" />
-                                </div>
-                                <div className='hidden dark:block'>
-                                  <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-6 mb-6" theme='dark' />
-                                </div>
-                              </div>
+                              <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="mx-6 mb-6" />
                               <button
                                 type="submit"
                                 className="flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
