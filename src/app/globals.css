@@ -59,6 +59,7 @@
 
 .g-recaptcha {
   overflow:hidden;
-  width:301px;
-  height:75px;
+  width:306px;
+  height:80px;
+  @apply border-2 rounded-sm;
 }
