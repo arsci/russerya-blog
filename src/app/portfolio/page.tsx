@@ -59,8 +59,8 @@ export default function Home() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-2">
             <div className='grid-cols-1'>
-              <div className="grid grid-rows-1 font-bold text-3xl text-left mb-2">
-                Ryan Russell
+              <div className="grid grid-rows-1 font-bold text-3xl text-left mb-2 flex-wrap">
+                Ryan <br className="lg:hidden md:hidden sm:hidden" /> Russell
               </div>
               <div className="grid-rows-1 font-bold text-xl text-left">
                 AWS Specialist, DevOps Guru, Hobbyist
