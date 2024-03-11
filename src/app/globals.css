@@ -56,3 +56,9 @@
 .disabledInput {
   color: red;
 }
+
+.g-recaptcha {
+  overflow:hidden;
+  width:301px;
+  height:75px;
+}
