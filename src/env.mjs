@@ -7,7 +7,5 @@ export const env = createEnv({
   },
   runtimeEnv: {
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
-    NEXT_PUBLIC_EO_LIST_ID: process.env.EO_LIST_ID,
-    NEXT_PUBLIC_EO_KEY: process.env.EO_KEY,
   },
 })

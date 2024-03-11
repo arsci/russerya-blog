@@ -118,7 +118,7 @@ export function NewsletterFormStacked() {
             <>
               {isCaptchaVisible && (
                 <div className="flex justify-center items-center mb-6">
-                  <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="g-captcha mx-6 mb-6" />
+                  <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="g-captcha" />
                 </div>
               )}
               <button
