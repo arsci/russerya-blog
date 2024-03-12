@@ -11,48 +11,56 @@ export default function Home() {
   return (
     <div className="py-14 sm:py-16">
       <div className="mx-auto max-w-5xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2 className="text-3xl font-bold tracking-tight blog-index sm:text-4xl">Van Build</h2>
-          <p className="mt-2 text-lg leading-8 blog-header">
+        <div className="preview-cards-header-blog-pages">
+          <h2 className="preview-cards-header-text">Van Build</h2>
+          <p className="preview-cards-blog-pages-p">
             In June 2023 we <a href="/blog/van/about-the-van" className="inline-links">purchased a 2023 Ford Transit</a> to convert into a camper. Our goal is to spend
             the following ~9 months building it out to be able to live and work out of it for 2-3 weeks at a time.
             We&#39;ll be documenting the process here through various blog posts, guides, and videos!
           </p>
         </div>
-        <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t lines pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            {allVanPosts.map((post) => (
-              <article key={post._id} className="flex max-w-xl flex-col items-start justify-between">
-                <div className="flex items-center gap-x-4 text-xs">
-                <time
-                  dateTime={post.date}
-                  className="mb-2 block text-xs blog-index"
-                >
-                  {new Date(post.date).toLocaleDateString('en-US', {
-                    day: 'numeric',
-                    month: 'long',
-                    year: 'numeric',
-                  })}
-                </time>
-                  <a
-                    href={post.category}
-                    className="category-icons"
+        <div className="preview-cards">
+          {allVanPosts.map((post) => (
+            <div className="preview-article-wrapper-div">
+            <article key={post._id} className="preview-article">
+              <div className="preview-article-date-time-category-grid">
+                <div className="preview-article-date-time-col">
+                  <time
+                    dateTime={post.date}
+                    className="preview-article-date-time"
                   >
-                    {post.category}
-                  </a>
+                    {new Date(post.date).toLocaleDateString('en-US', {
+                      day: 'numeric',
+                      month: 'long',
+                      year: 'numeric',
+                    })}
+                  </time>
+                  </div>
+                  <div className="preview-article-category-col">
+                    <a
+                      href={post.category}
+                      className="category-icons"
+                    >
+                      {post.category}
+                    </a>
+                  </div>
                 </div>
-                <div className="group relative mb-20">
-                  <h3 className="mt-3 text-lg font-semibold leading-6 blog-index dark:hover:text-gray-400 hover:text-black">
+                <div className="preview-post-title">
+                  <h3 className="preview-post-header">
                     <a href={post.slug}>
                       <span className="absolute inset-0" />
                       {post.title}
                     </a>
                   </h3>
-                  <p className="mt-5 line-clamp-3 text-sm leading-6 blog-index">{post.description}</p>
+                </div>
+                <div className="preview-post-desc">
+                  <p>{post.description}</p>
                 </div>
               </article>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
+    </div>
   )
 }

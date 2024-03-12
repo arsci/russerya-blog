@@ -1,7 +1,6 @@
 'use client'
 import * as Socials from './LinksAndIcons'
 import { NewsletterMain } from './Newsletter'
-import Script from 'next/script'
   
 export default function Footer() {
   return (
