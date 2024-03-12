@@ -5,7 +5,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { absoluteUrl } from '@/utils/utils'
 import { Mdx } from '@/components/MDXComponents'
-import { allHomePosts } from 'contentlayer/generated'
+import { allVanPosts } from 'contentlayer/generated'
 import ReturnButton from '@/components/ReturnButton'
 import { NewsletterMain } from '@/components/Newsletter'
 
@@ -16,7 +16,7 @@ interface PostPageProps {
 }
 
 async function getPostFromParams(params: { slug: string }) {
-  const post = allHomePosts.find((post) => post._raw.flattenedPath === join("blog/home/", params.slug))
+  const post = allVanPosts.find((post) => post._raw.flattenedPath === join("blog/van/", params.slug))
 
   if (!post) {
     null
@@ -35,14 +35,14 @@ export async function generateMetadata({
   }
 
   const url = env.NEXT_PUBLIC_APP_URL
-  const ogUrl = new URL(`${url}/images/blog/home/${post.ogImage}`)
+  const ogUrl = new URL(`${url}/images/blog/van/${post.ogImage}`)
 
   ogUrl.searchParams.set("heading", post.title)
   ogUrl.searchParams.set("type", "Blog Post")
   ogUrl.searchParams.set("mode", "dark")
 
   return {
-    title: `${post.title} - Home Projects - Ryan Russell`,
+    title: `${post.title} - Van Build - Ryan Russell`,
     description: post.description,
     openGraph: {
       title: post.title,
@@ -63,6 +63,7 @@ export async function generateMetadata({
       title: post.title,
       description: post.description,
       images: [ogUrl.toString()],
+
   },
   }
 }
@@ -73,12 +74,12 @@ export default async function Post({ params }: { params: { slug: string } }) {
   
   if (!post) notFound()
 
-  const ogImage = `/images/blog/home/${post.ogImage}`
+  const ogImage = `/images/blog/van/${post.ogImage}`
  
   return (
     <div>
       <div className="max-w-3xl px-4 sm:px-6 lg:px-8 mx-auto">
-          <div className="sm:px-8 mt-16 ">
+          <div className="sm:px-8 mt-16">
             <ReturnButton />
             <div className='flex justify-center'>
                 <time dateTime={post.date} className="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500 sm:text-2xl">
@@ -123,8 +124,6 @@ export default async function Post({ params }: { params: { slug: string } }) {
               </article>
           </div>
         </div>
-        <div className="w-full border-t lines mt-8" />
-        <NewsletterMain />
       </div>
     </div>
   )

@@ -123,8 +123,6 @@ export default async function Post({ params }: { params: { slug: string } }) {
               </article>
           </div>
         </div>
-        <div className="w-full border-t lines mt-8" />
-        <NewsletterMain />
       </div>
     </div>
   )

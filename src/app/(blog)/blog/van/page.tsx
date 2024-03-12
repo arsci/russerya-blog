@@ -2,6 +2,7 @@
 import { compareDesc } from "date-fns"
 import { allVanPosts } from 'contentlayer/generated'
 import Link from "next/link";
+import { NewsletterMain } from "@/components/Newsletter";
  
 export default function Home() {
 
@@ -39,7 +40,6 @@ export default function Home() {
                         })}
                       </time>
                     </div>
-                    
                   </div>
                   <div className="preview-post-title">
                     <h3 className="preview-post-header">

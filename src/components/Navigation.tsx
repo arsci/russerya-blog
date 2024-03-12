@@ -3,5 +3,5 @@ export const navigation = [
   { name: 'Blog', href: '/blog' },
   { name: 'Van Build', href: '/blog/van' },
   { name: 'Home Projects', href: '/blog/home' },
-  { name: 'Portfolio', href: '/portfolio' },
+  { name: 'About Me', href: '/about-me' },
 ]
