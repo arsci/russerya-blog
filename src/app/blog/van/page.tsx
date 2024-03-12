@@ -1,5 +1,7 @@
+'use client'
 import { compareDesc } from "date-fns"
 import { allVanPosts } from 'contentlayer/generated'
+import Link from "next/link";
  
 export default function Home() {
 
@@ -19,39 +21,30 @@ export default function Home() {
             We&#39;ll be documenting the process here through various blog posts, guides, and videos!
           </p>
         </div>
-        <div className="preview-cards">
+        <div className="preview-cards" suppressHydrationWarning={true}>
           {allVanPosts.map((post) => (
-            <a href={post.slug} key={post._id}>
+            <Link href={post.slug} key={post._id}>
               <div className="preview-article-wrapper-div">
-              <article key={post._id} className="preview-article">
-                <div className="preview-article-date-time-category-grid">
-                  <div className="preview-article-date-time-col">
-                    <time
-                      dateTime={post.date}
-                      className="preview-article-date-time"
-                    >
-                      {new Date(post.date).toLocaleDateString('en-US', {
-                        day: 'numeric',
-                        month: 'long',
-                        year: 'numeric',
-                      })}
-                    </time>
-                    </div>
-                    <div className="preview-article-category-col">
-                      <a
-                        href={post.category}
-                        className="category-icons"
+                <article className="preview-article">
+                  <div className="preview-article-date-time-category-grid">
+                    <div className="preview-article-date-time-col">
+                      <time
+                        dateTime={post.date}
+                        className="preview-article-date-time"
                       >
-                        {post.category}
-                      </a>
+                        {new Date(post.date).toLocaleDateString('en-US', {
+                          day: 'numeric',
+                          month: 'long',
+                          year: 'numeric',
+                        })}
+                      </time>
                     </div>
+                    
                   </div>
                   <div className="preview-post-title">
                     <h3 className="preview-post-header">
-                      <a href={post.slug}>
-                        <span className="absolute inset-0" />
-                        {post.title}
-                      </a>
+                      <span className="absolute inset-0" />
+                      {post.title}
                     </h3>
                   </div>
                   <div className="preview-post-desc">
@@ -59,7 +52,7 @@ export default function Home() {
                   </div>
                 </article>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

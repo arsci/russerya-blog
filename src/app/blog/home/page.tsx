@@ -1,5 +1,6 @@
 import { compareDesc } from "date-fns"
 import { allHomePosts } from 'contentlayer/generated'
+import Link from "next/link";
  
 export default function Home() {
 
@@ -19,8 +20,7 @@ export default function Home() {
         </div>
         <div className="preview-cards">
           {allHomePosts.map((post) => (
-            <div key={post._id}>
-            <a href={post.slug}>
+            <Link href={post.slug} key={post._id}>
               <div className="preview-article-wrapper-div">
                 <article key={post._id} className="preview-article">
                   <div className="preview-article-date-time-category-grid">
@@ -36,21 +36,11 @@ export default function Home() {
                         })}
                       </time>
                       </div>
-                      <div className="preview-article-category-col">
-                        <a
-                          href={post.category}
-                          className="category-icons"
-                        >
-                          {post.category}
-                        </a>
-                      </div>
                     </div>
                     <div className="preview-post-title">
                       <h3 className="preview-post-header">
-                        <a href={post.slug}>
-                          <span className="absolute inset-0" />
-                          {post.title}
-                        </a>
+                        <span className="absolute inset-0" />
+                        {post.title}
                       </h3>
                     </div>
                     <div className="preview-post-desc">
@@ -58,8 +48,7 @@ export default function Home() {
                     </div>
                   </article>
                 </div>
-              </a>
-              </div>
+              </Link>
             ))}
         </div>
       </div>

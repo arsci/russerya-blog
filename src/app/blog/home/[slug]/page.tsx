@@ -7,6 +7,7 @@ import { absoluteUrl } from '@/utils/utils'
 import { Mdx } from '@/components/MDXComponents'
 import { allHomePosts } from 'contentlayer/generated'
 import ReturnButton from '@/components/ReturnButton'
+import { NewsletterMain } from '@/components/Newsletter'
 
 interface PostPageProps {
   params: {
@@ -112,7 +113,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
           </div>
         </div>
       </div>
-      <div className="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto mb-20">
+      <div className="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto mb-10">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="sm:px-8 mt-8">
               <article>
@@ -122,6 +123,8 @@ export default async function Post({ params }: { params: { slug: string } }) {
               </article>
           </div>
         </div>
+        <div className="w-full border-t lines mt-8" />
+        <NewsletterMain />
       </div>
     </div>
   )

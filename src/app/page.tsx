@@ -1,3 +1,4 @@
+'use client'
 import { compareDesc } from "date-fns"
 import { allVanPosts } from 'contentlayer/generated'
 import { allTechPosts } from 'contentlayer/generated'
@@ -11,6 +12,8 @@ import Image from "next/image"
 import Link from "next/link"
 
 export default function Home() {
+
+
 
   const latestVanPost = allVanPosts
     .sort((a,b) => {
@@ -34,7 +37,7 @@ export default function Home() {
           <h2 className="preview-cards-header-text">Latest Blog Posts</h2>
         </div>
         <div className="preview-cards">
-          <a href={latestTechPost.slug}>
+          <Link href={latestTechPost.slug}>
             <div className="preview-article-wrapper-div">
               <article key={latestTechPost._id} className="preview-article">
                 <div className="preview-article-date-time-category-grid">
@@ -51,20 +54,17 @@ export default function Home() {
                     </time>
                   </div>
                   <div className="preview-article-category-col">
-                    <a
-                      href={"blog/"}
+                    <Link
+                      href={"blog/" + latestTechPost.category}
                       className="category-icons"
                     >
                       {latestTechPost.category}
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="preview-post-title">
                   <h3 className="preview-post-header">
-                    <a href={latestTechPost.slug}>
-                      <span className="preview-post-span" />
-                        {latestTechPost.title}
-                    </a>
+                    {latestTechPost.title}
                   </h3>
                 </div>
                 <div className="preview-post-desc">
@@ -72,8 +72,8 @@ export default function Home() {
                 </div>
               </article>
             </div>
-          </a>
-          <a href={latestVanPost.slug}>
+          </Link>
+          <Link href={latestVanPost.slug}>
             <div className="preview-article-wrapper-div">
               <article key={latestVanPost._id} className="preview-article">
                 <div className="preview-article-date-time-category-grid">
@@ -90,20 +90,18 @@ export default function Home() {
                     </time>
                   </div>
                   <div className="preview-article-category-col">
-                    <a
+                    <Link
                       href={"blog/" + latestVanPost.category}
                       className="category-icons"
                     >
                       {latestVanPost.category}
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="preview-post-title">
                   <h3 className="preview-post-header">
-                    <a href={latestVanPost.slug}>
-                      <span className="preview-post-span" />
-                      {latestVanPost.title}
-                    </a>
+                    <span className="preview-post-span" />
+                    {latestVanPost.title}
                   </h3>
                 </div>
                 <div className="preview-post-desc">
@@ -111,8 +109,8 @@ export default function Home() {
                 </div>
               </article>
             </div>
-          </a>
-          <a href={latestHomePost.slug}>
+          </Link>
+          <Link href={latestHomePost.slug}>
             <div className="preview-article-wrapper-div">
               <article key={latestHomePost._id} className="preview-article">
                 <div className="preview-article-date-time-category-grid">
@@ -129,20 +127,18 @@ export default function Home() {
                     </time>
                   </div>
                   <div className="preview-article-category-col">
-                    <a
+                    <Link
                       href={"blog/" + latestHomePost.category}
                       className="category-icons"
                     >
                       {latestHomePost.category}
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="preview-post-title">
                   <h3 className="preview-post-header">
-                    <a href={latestHomePost.slug}>
-                      <span className="preview-post-span" />
-                      {latestHomePost.title}
-                    </a>
+                    <span className="preview-post-span" />
+                    {latestHomePost.title}
                   </h3>
                 </div>
                 <div className="preview-post-desc">
@@ -150,7 +146,7 @@ export default function Home() {
                 </div>
               </article> 
             </div>
-          </a>
+          </Link>
           <div className="w-full border-t lines lg:hidden" />
         </div>
         <div className="w-full border-t lines mt-10 hidden lg:block" />
