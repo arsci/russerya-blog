@@ -1,7 +1,7 @@
 'use client'
 import { ArrowPathIcon, QuestionMarkCircleIcon, BuildingOffice2Icon, SunIcon, WrenchScrewdriverIcon, ComputerDesktopIcon } from '@heroicons/react/20/solid'
 import { EnvelopeIcon } from '@heroicons/react/24/outline'
-import { timeline, certs, languages1, languages2, aws, skills } from '@/components/Portfolio'
+import { timeline, certs, languages1, languages2, aws, skills } from '@/components/AboutMe'
 import * as Socials from '@/components/LinksAndIcons'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState, useRef } from 'react'

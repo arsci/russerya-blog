@@ -55,7 +55,7 @@ export const skills = [
 
 export const timeline = [
   {
-    id: 10,
+    id: 11,
     company: 'Launched Bright Wrench Design',
     location: 'Sacramento, CA',
     date: 'January 2024',
@@ -64,6 +64,15 @@ export const timeline = [
     href: "https://shop.brightwrenchdesign.com",
     comment: "Newly launched this year, Bright Wrench Design is a small online shop for hobby products",
     bullets: []
+  },
+  {
+    id: 10,
+    company: 'Independent Consultant',
+    location: 'Remote',
+    date: 'January 2024',
+    datetime: '2024-01-01',
+    icon: CubeTransparentIcon,
+    comment: 'Independent AWS Cloud & DevOps Consultant'
   },
   {
     id: 9,

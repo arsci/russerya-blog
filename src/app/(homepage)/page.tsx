@@ -34,7 +34,7 @@ export default function Home() {
     <div className="py-14 sm:py-16">
       <div className="mx-auto max-w-5xl px-6 lg:px-8">
         <div className="preview-cards-header">
-          <h2 className="preview-cards-header-text">Latest Blog Posts</h2>
+          <h2 className="preview-cards-header-text">Latest Posts</h2>
         </div>
         <div className="preview-cards">
           <Link href={latestTechPost.slug}>
