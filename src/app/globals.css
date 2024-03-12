@@ -31,7 +31,7 @@
 }
 
 .category-icons {
-  @apply relative z-10 rounded-full bg-gray-300 dark:bg-gray-600 px-3 py-1.5 font-medium text-gray-600 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-900
+  @apply relative z-10 rounded-full bg-gray-100 dark:bg-gray-800 px-3 py-1.5 font-medium text-gray-600 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-500
 }
 
 .inline-links {
@@ -84,7 +84,7 @@
 }
 
 .preview-article-wrapper-div {
-  @apply bg-slate-200 dark:bg-slate-700 rounded-xl py-5 px-5
+  @apply h-full bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 rounded-xl py-5 px-5
 }
 
 .preview-article {
@@ -112,7 +112,7 @@
 }
 
 .preview-post-header {
-  @apply mt-3 text-lg font-semibold leading-6 dark:hover:text-gray-400 hover:text-black
+  @apply mt-3 text-lg font-semibold leading-6 dark:hover:text-white hover:text-black
 }
 
 .preview-post-span {

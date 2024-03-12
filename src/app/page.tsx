@@ -34,117 +34,123 @@ export default function Home() {
           <h2 className="preview-cards-header-text">Latest Blog Posts</h2>
         </div>
         <div className="preview-cards">
-          <div className="preview-article-wrapper-div">
-            <article key={latestTechPost._id} className="preview-article">
-              <div className="preview-article-date-time-category-grid">
-                <div className="preview-article-date-time-col">
-                  <time
-                    dateTime={latestTechPost.date}
-                    className="preview-article-date-time"
-                  >
-                    {new Date(latestTechPost.date).toLocaleDateString('en-US', {
-                      day: 'numeric',
-                      month: 'long',
-                      year: 'numeric',
-                    })}
-                  </time>
+          <a href={latestTechPost.slug}>
+            <div className="preview-article-wrapper-div">
+              <article key={latestTechPost._id} className="preview-article">
+                <div className="preview-article-date-time-category-grid">
+                  <div className="preview-article-date-time-col">
+                    <time
+                      dateTime={latestTechPost.date}
+                      className="preview-article-date-time"
+                    >
+                      {new Date(latestTechPost.date).toLocaleDateString('en-US', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric',
+                      })}
+                    </time>
+                  </div>
+                  <div className="preview-article-category-col">
+                    <a
+                      href={"blog/"}
+                      className="category-icons"
+                    >
+                      {latestTechPost.category}
+                    </a>
+                  </div>
                 </div>
-                <div className="preview-article-category-col">
-                  <a
-                    href={"blog/"}
-                    className="category-icons"
-                  >
-                    {latestTechPost.category}
-                  </a>
+                <div className="preview-post-title">
+                  <h3 className="preview-post-header">
+                    <a href={latestTechPost.slug}>
+                      <span className="preview-post-span" />
+                        {latestTechPost.title}
+                    </a>
+                  </h3>
                 </div>
-              </div>
-              <div className="preview-post-title">
-                <h3 className="preview-post-header">
-                  <a href={latestTechPost.slug}>
-                    <span className="preview-post-span" />
-                      {latestTechPost.title}
-                  </a>
-                </h3>
-              </div>
-              <div className="preview-post-desc">
-                <p>{latestTechPost.description}</p>
-              </div>
-            </article>
-          </div>
-          <div className="preview-article-wrapper-div">
-            <article key={latestVanPost._id} className="preview-article">
-              <div className="preview-article-date-time-category-grid">
-                <div className="preview-article-date-time-col">
-                  <time
-                    dateTime={latestVanPost.date}
-                    className="preview-article-date-time"
-                  >
-                    {new Date(latestVanPost.date).toLocaleDateString('en-US', {
-                      day: 'numeric',
-                      month: 'long',
-                      year: 'numeric',
-                    })}
-                  </time>
+                <div className="preview-post-desc">
+                  <p>{latestTechPost.description}</p>
                 </div>
-                <div className="preview-article-category-col">
-                  <a
-                    href={"blog/" + latestVanPost.category}
-                    className="category-icons"
-                  >
-                    {latestVanPost.category}
-                  </a>
+              </article>
+            </div>
+          </a>
+          <a href={latestVanPost.slug}>
+            <div className="preview-article-wrapper-div">
+              <article key={latestVanPost._id} className="preview-article">
+                <div className="preview-article-date-time-category-grid">
+                  <div className="preview-article-date-time-col">
+                    <time
+                      dateTime={latestVanPost.date}
+                      className="preview-article-date-time"
+                    >
+                      {new Date(latestVanPost.date).toLocaleDateString('en-US', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric',
+                      })}
+                    </time>
+                  </div>
+                  <div className="preview-article-category-col">
+                    <a
+                      href={"blog/" + latestVanPost.category}
+                      className="category-icons"
+                    >
+                      {latestVanPost.category}
+                    </a>
+                  </div>
                 </div>
-              </div>
-              <div className="preview-post-title">
-                <h3 className="preview-post-header">
-                  <a href={latestVanPost.slug}>
-                    <span className="preview-post-span" />
-                    {latestVanPost.title}
-                  </a>
-                </h3>
-              </div>
-              <div className="preview-post-desc">
-                <p>{latestVanPost.description}</p>
-              </div>
-            </article>
-          </div>
-          <div className="preview-article-wrapper-div">
-            <article key={latestHomePost._id} className="preview-article">
-              <div className="preview-article-date-time-category-grid">
-                <div className="preview-article-date-time-col">
-                  <time
-                    dateTime={latestHomePost.date}
-                    className="preview-article-date-time"
-                  >
-                    {new Date(latestHomePost.date).toLocaleDateString('en-US', {
-                      day: 'numeric',
-                      month: 'long',
-                      year: 'numeric',
-                    })}
-                  </time>
+                <div className="preview-post-title">
+                  <h3 className="preview-post-header">
+                    <a href={latestVanPost.slug}>
+                      <span className="preview-post-span" />
+                      {latestVanPost.title}
+                    </a>
+                  </h3>
                 </div>
-                <div className="preview-article-category-col">
-                  <a
-                    href={"blog/" + latestHomePost.category}
-                    className="category-icons"
-                  >
-                    {latestHomePost.category}
-                  </a>
+                <div className="preview-post-desc">
+                  <p>{latestVanPost.description}</p>
                 </div>
-              </div>
-              <div className="preview-post-title">
-                <h3 className="preview-post-header">
-                  <a href={latestHomePost.slug}>
-                    <span className="preview-post-span" />
-                    {latestHomePost.title}
-                  </a>
-                </h3>
-              </div>
-              <div className="preview-post-desc">
-                <p>{latestHomePost.description}</p>
-              </div>
-            </article> 
-          </div>
+              </article>
+            </div>
+          </a>
+          <a href={latestHomePost.slug}>
+            <div className="preview-article-wrapper-div">
+              <article key={latestHomePost._id} className="preview-article">
+                <div className="preview-article-date-time-category-grid">
+                  <div className="preview-article-date-time-col">
+                    <time
+                      dateTime={latestHomePost.date}
+                      className="preview-article-date-time"
+                    >
+                      {new Date(latestHomePost.date).toLocaleDateString('en-US', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric',
+                      })}
+                    </time>
+                  </div>
+                  <div className="preview-article-category-col">
+                    <a
+                      href={"blog/" + latestHomePost.category}
+                      className="category-icons"
+                    >
+                      {latestHomePost.category}
+                    </a>
+                  </div>
+                </div>
+                <div className="preview-post-title">
+                  <h3 className="preview-post-header">
+                    <a href={latestHomePost.slug}>
+                      <span className="preview-post-span" />
+                      {latestHomePost.title}
+                    </a>
+                  </h3>
+                </div>
+                <div className="preview-post-desc">
+                  <p>{latestHomePost.description}</p>
+                </div>
+              </article> 
+            </div>
+          </a>
           <div className="w-full border-t lines lg:hidden" />
         </div>
         <div className="w-full border-t lines mt-10 hidden lg:block" />

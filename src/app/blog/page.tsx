@@ -19,43 +19,47 @@ export default function Home() {
         </div>
         <div className="preview-cards">
           {allTechPosts.map((post) => (
-            <div className="preview-article-wrapper-div">
-            <article key={post._id} className="preview-article">
-              <div className="preview-article-date-time-category-grid">
-                <div className="preview-article-date-time-col">
-                  <time
-                    dateTime={post.date}
-                    className="preview-article-date-time"
-                  >
-                    {new Date(post.date).toLocaleDateString('en-US', {
-                      day: 'numeric',
-                      month: 'long',
-                      year: 'numeric',
-                    })}
-                  </time>
-                  </div>
-                  <div className="preview-article-category-col">
-                    <a
-                      href={post.category}
-                      className="category-icons"
+            <div>
+            <a href={post.slug}>
+              <div className="preview-article-wrapper-div">
+              <article key={post._id} className="preview-article">
+                <div className="preview-article-date-time-category-grid">
+                  <div className="preview-article-date-time-col">
+                    <time
+                      dateTime={post.date}
+                      className="preview-article-date-time"
                     >
-                      {post.category}
-                    </a>
+                      {new Date(post.date).toLocaleDateString('en-US', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric',
+                      })}
+                    </time>
+                    </div>
+                    <div className="preview-article-category-col">
+                      <a
+                        href={post.category}
+                        className="category-icons"
+                      >
+                        {post.category}
+                      </a>
+                    </div>
                   </div>
-                </div>
-                <div className="preview-post-title">
-                  <h3 className="preview-post-header">
-                    <a href={post.slug}>
-                      <span className="absolute inset-0" />
-                      {post.title}
-                    </a>
-                  </h3>
-                </div>
-                <div className="preview-post-desc">
-                  <p>{post.description}</p>
-                </div>
-              </article>
-            </div>
+                  <div className="preview-post-title">
+                    <h3 className="preview-post-header">
+                      <a href={post.slug}>
+                        <span className="absolute inset-0" />
+                        {post.title}
+                      </a>
+                    </h3>
+                  </div>
+                  <div className="preview-post-desc">
+                    <p>{post.description}</p>
+                  </div>
+                </article>
+              </div>
+            </a>
+          </div>
           ))}
         </div>
       </div>
