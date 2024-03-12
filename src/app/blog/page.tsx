@@ -19,8 +19,7 @@ export default function Home() {
         </div>
         <div className="preview-cards">
           {allTechPosts.map((post) => (
-            <div>
-            <a href={post.slug}>
+            <a href={post.slug} key={post._id}>
               <div className="preview-article-wrapper-div">
               <article key={post._id} className="preview-article">
                 <div className="preview-article-date-time-category-grid">
@@ -59,7 +58,6 @@ export default function Home() {
                 </article>
               </div>
             </a>
-          </div>
           ))}
         </div>
       </div>

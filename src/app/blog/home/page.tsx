@@ -19,6 +19,7 @@ export default function Home() {
         </div>
         <div className="preview-cards">
           {allHomePosts.map((post) => (
+            <div key={post._id}>
             <a href={post.slug}>
               <div className="preview-article-wrapper-div">
                 <article key={post._id} className="preview-article">
@@ -58,6 +59,7 @@ export default function Home() {
                   </article>
                 </div>
               </a>
+              </div>
             ))}
         </div>
       </div>
