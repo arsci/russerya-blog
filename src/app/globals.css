@@ -72,7 +72,7 @@
  }
 
 .preview-cards-header-homepage {
-  @apply mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 pt-4 mb-6 lg:max-w-none lg:grid-cols-3
+  @apply mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 mb-6 lg:max-w-none lg:grid-cols-3
 }
 
 .preview-cards-header-text {

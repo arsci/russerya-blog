@@ -10,7 +10,7 @@ export default function Home() {
     });
     
   return (
-    <div className="py-14 sm:py-16">
+    <div className="py-8">
       <div className="mx-auto max-w-5xl px-6 lg:px-8">
         <div className="preview-cards-header-blog-pages">
           <h2 className="preview-cards-header-text">Blog</h2>
