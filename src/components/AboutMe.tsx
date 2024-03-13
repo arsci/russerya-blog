@@ -93,7 +93,7 @@ export const timeline = [
     company: 'Altium Limited',
     title: 'DevOps Engineer',
     location: 'Remote',
-    date: 'June 2018',
+    date: 'June 2022',
     datetime: '2022-05-01',
     icon: LifebuoyIcon,
     bullets: [
