@@ -78,10 +78,10 @@ export default async function Post({ params }: { params: { slug: string } }) {
   return (
     <div>
       <div className="max-w-3xl px-4 sm:px-6 lg:px-8 mx-auto">
-          <div className="sm:px-8 mt-16 ">
+          <div className="sm:px-8 mt-8">
             <ReturnButton />
             <div className='flex justify-center'>
-                <time dateTime={post.date} className="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500 sm:text-2xl">
+                <time dateTime={post.date} className="order-first flex items-center text-base text-zinc-800 dark:text-zinc-100 sm:text-2xl">
                   {new Date(post.date).toLocaleDateString('en-US', {
                     day: 'numeric',
                     month: 'long',

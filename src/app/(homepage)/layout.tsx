@@ -2,6 +2,7 @@ import '../globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Header from '../../components/Header'
+import MessageBubble from '@/components/MessageBubble'
 import Footer from '../../components/Footer'
 import { Analytics } from '../../components/Analytics'
 import { ThemeProvider } from "../../components/ThemeProvider";
@@ -23,6 +24,7 @@ export default function RootLayout({
         <body className={`${inter.className} bg-slate-50 dark:bg-gray-800`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
+          <MessageBubble />
           {children}
           <Footer />
         </ThemeProvider>
