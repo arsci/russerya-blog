@@ -1,19 +1,13 @@
-'use client'
 import { compareDesc } from "date-fns"
 import { allVanPosts } from 'contentlayer/generated'
 import { allTechPosts } from 'contentlayer/generated'
 import { allHomePosts } from 'contentlayer/generated'
 import { NewsletterMain } from "@/components/Newsletter"
-import imgVan from '/images/index/van.jpg'
-import imgNala from '@/images/nala.jpg'
-import imgBoard from '@/images/board.jpg'
-import clsx from 'clsx'
+
 import Image from "next/image"
 import Link from "next/link"
 
 export default function Home() {
-
-
 
   const latestVanPost = allVanPosts
     .sort((a,b) => {
