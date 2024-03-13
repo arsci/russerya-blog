@@ -4,7 +4,7 @@ import { allVanPosts } from 'contentlayer/generated'
 import { allTechPosts } from 'contentlayer/generated'
 import { allHomePosts } from 'contentlayer/generated'
 import { NewsletterMain } from "@/components/Newsletter"
-import imgVan from '@/images/van.jpg'
+import imgVan from '/images/index/van.jpg'
 import imgNala from '@/images/nala.jpg'
 import imgBoard from '@/images/board.jpg'
 import clsx from 'clsx'
@@ -171,21 +171,36 @@ function Photos() {
   return (
     <div className="mt-16 sm:mt-20">
       <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-        {[imgNala, imgBoard, imgVan].map((image, imageIndex) => (
-          <div
-            key={image.src}
-            className={clsx(
-              'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl'
-            )}
-          >
-            <Image
-              src={image}
-              alt=""
-              sizes="(min-width: 640px) 18rem, 11rem"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-          </div>
-        ))}
+        <div className='relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl'>
+          <Image
+            src='/images/index/nala.jpg'
+            alt=""
+            sizes="(min-width: 640px) 18rem, 11rem"
+            width="640"
+            height="640"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
+        <div className='relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl'>
+          <Image
+            src='/images/index/board.jpg'
+            alt=""
+            sizes="(min-width: 640px) 18rem, 11rem"
+            width="640"
+            height="640"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
+        <div className='relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl'>
+          <Image
+            src='/images/index/van.jpg'
+            alt=""
+            sizes="(min-width: 640px) 18rem, 11rem"
+            width="640"
+            height="640"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
       </div>
     </div>
   )

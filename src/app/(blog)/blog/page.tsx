@@ -1,7 +1,6 @@
 import { compareDesc } from "date-fns"
 import { allTechPosts } from 'contentlayer/generated'
 import Link from "next/link";
-import { NewsletterMain } from "@/components/Newsletter";
  
 export default function Home() {
 

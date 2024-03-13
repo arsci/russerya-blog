@@ -2,7 +2,7 @@ import '../globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Header from '../../components/Header'
-import FooterBlog from '../../components/FooterBlog'
+import Footer from '../../components/FooterBlog'
 import { Analytics } from '../../components/Analytics'
 import { ThemeProvider } from "../../components/ThemeProvider";
 
@@ -24,7 +24,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
           {children}
-          <FooterBlog />
+          <Footer />
         </ThemeProvider>
         <Analytics />
         </body>
