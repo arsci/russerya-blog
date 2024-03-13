@@ -50,7 +50,8 @@ export const skills = [
   "Docker",
   "JIRA",
   "Documentation",
-  "3D Printing"
+  "3D Printing",
+  "IaC"
 ]
 
 export const timeline = [
