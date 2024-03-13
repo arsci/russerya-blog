@@ -109,12 +109,23 @@ export default function Home() {
             </div>
             <p className="text-lg font-bold text-center mb-2">Looking for an AWS Pro?</p>
             <p className="text-center mb-4">I am available for AWS Cloud and DevOps related projects!</p>
+            <div className="flex justify-center mb-2">
+              <a href='#'
+                onClick={() => setOpen(true)}
+              >
+                <button
+                  className="flex w-full justify-center rounded-md bg-indigo-600 px-10 py-3 font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                >
+                  Send me a message
+                </button>
+              </a>
+            </div>
             <div className="flex justify-center">
               <a href={process.env.NEXT_PUBLIC_CONSULT_URI} target="_blank">
                 <button
                   className="flex w-full justify-center rounded-md bg-indigo-600 px-10 py-3 font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
-                  Schedule a consultation!
+                  Schedule a consultation
                 </button>
               </a>
             </div>
