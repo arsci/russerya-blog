@@ -59,7 +59,7 @@ export default function Home() {
   
   return (
     <div className="py-14 sm:py-16">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <div className="grid grid-cols-2">
             <div className='grid-cols-1'>
               <div className="grid grid-rows-1 font-bold text-3xl text-left mb-2 flex-wrap">
@@ -223,7 +223,11 @@ export default function Home() {
                         </div>
                         <div className="grid">
                           <div className="grid-rows-1 text-lg text-left font-bold">
-                              { event.href && <a href={event.href} target="_blank" className="inline-links">{event.company}</a> } { !event.href && <span>{event.company}</span> } {event.location && <span className="text-md font-normal mx-2">|</span>} {event.location && <span className="text-sm font-normal mx-0">{event.location}{" "}</span>}
+                              { event.href && <a href={event.href} target="_blank" className="inline-links">{event.company}</a> }
+                              { event.href &&<span>&nbsp;&nbsp;&nbsp;</span> }
+                              { !event.href && <span>{event.company}&nbsp;&nbsp;&nbsp;</span> } 
+                              { event.location && <br className="md:hidden lg:hidden" /> } 
+                              { event.location && <span className="text-sm font-normal whitespace-nowrap mx-0">{event.location}{" "}</span> }
                           </div>
                           <div className="grid-rows-1 text-left text-medium dark:text-gray-300 text-gray-600">
                             {event.title}{" "}

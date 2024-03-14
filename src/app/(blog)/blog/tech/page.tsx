@@ -1,23 +1,21 @@
 import { compareDesc } from "date-fns"
-import { allVanPosts } from 'contentlayer/generated'
 import { allTechPosts } from 'contentlayer/generated'
-import { allHomePosts } from 'contentlayer/generated'
-import Link from "next/link"
-
+import Link from "next/link";
+ 
 export default function Home() {
 
-  const posts = [...allHomePosts,...allTechPosts,...allVanPosts]
+  const posts = allTechPosts
     .sort((a,b) => {
       return compareDesc(new Date(a.date), new Date(b.date))
     });
-
+    
   return (
     <div className="py-8">
       <div className="mx-auto max-w-5xl px-6 lg:px-8">
         <div className="preview-cards-header-blog-pages">
-          <h2 className="preview-cards-header-text">All Blog Posts</h2>
+          <h2 className="preview-cards-header-text">Technology</h2>
           <p className="preview-cards-blog-pages-p">
-            Everything from technology and automobiles to home improvement projects.
+            Everything technology related
           </p>
         </div>
         <div className="preview-cards">

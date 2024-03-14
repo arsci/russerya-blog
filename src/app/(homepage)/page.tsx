@@ -3,7 +3,6 @@ import { allVanPosts } from 'contentlayer/generated'
 import { allTechPosts } from 'contentlayer/generated'
 import { allHomePosts } from 'contentlayer/generated'
 import { NewsletterMain } from "@/components/Newsletter"
-
 import Image from "next/image"
 import Link from "next/link"
 
@@ -24,6 +23,18 @@ export default function Home() {
       return compareDesc(new Date(a.date), new Date(b.date))
     })[0];
 
+  let allPosts = []
+  let sortedPosts = {}
+
+  allPosts.push(latestVanPost)
+  allPosts.push(latestTechPost)
+  allPosts.push(latestHomePost)
+
+  sortedPosts = allPosts
+    .sort((a,b) => {
+    return compareDesc(new Date(a.date), new Date(b.date))
+  })[0];
+
   return (
     <div className="py-8">
       <div className="mx-auto max-w-5xl px-6 lg:px-8">
@@ -31,110 +42,54 @@ export default function Home() {
           <h2 className="preview-cards-header-text">Latest Posts</h2>
         </div>
         <div className="preview-cards">
-          <Link href={latestTechPost.slug}>
-            <div className="preview-article-wrapper-div">
-              <article key={latestTechPost._id} className="preview-article">
-                <div className="preview-article-date-time-category-grid">
-                  <div className="preview-article-date-time-col">
-                    <time
-                      dateTime={latestTechPost.date}
-                      className="preview-article-date-time"
-                    >
-                      {new Date(latestTechPost.date).toLocaleDateString('en-US', {
-                        day: 'numeric',
-                        month: 'long',
-                        year: 'numeric',
-                      })}
-                    </time>
-                  </div>
-                  <div className="preview-article-category-col">
-                    <div className="category-icons">
-                      {latestTechPost.category}
+          {allPosts.map((post) => (
+              <Link href={post.slug} key={post._id}>
+                <div className="preview-article-wrapper-div">
+                <article key={post._id} className="preview-article">
+                  <div className="preview-article-date-time-category-grid">
+                    <div className="preview-article-date-time-col">
+                      <time
+                        dateTime={post.date}
+                        className="preview-article-date-time"
+                      >
+                        {new Date(post.date).toLocaleDateString('en-US', {
+                          day: 'numeric',
+                          month: 'long',
+                          year: 'numeric',
+                        })}
+                      </time>
+                      </div>
+                      <div className="preview-article-category-col">
+                        <div className="category-icons">
+                          {post.category}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div className="preview-post-title">
-                  <h3 className="preview-post-header">
-                    {latestTechPost.title}
-                  </h3>
-                </div>
-                <div className="preview-post-desc">
-                  <p>{latestTechPost.description}</p>
-                </div>
-              </article>
-            </div>
-          </Link>
-          <Link href={latestVanPost.slug}>
-            <div className="preview-article-wrapper-div">
-              <article key={latestVanPost._id} className="preview-article">
-                <div className="preview-article-date-time-category-grid">
-                  <div className="preview-article-date-time-col">
-                    <time
-                      dateTime={latestVanPost.date}
-                      className="preview-article-date-time"
-                    >
-                      {new Date(latestVanPost.date).toLocaleDateString('en-US', {
-                        day: 'numeric',
-                        month: 'long',
-                        year: 'numeric',
-                      })}
-                    </time>
-                  </div>
-                  <div className="preview-article-category-col">
-                    <div className="category-icons">
-                      {latestVanPost.category}
+                    <div className="preview-post-title">
+                      <h3 className="preview-post-header">
+                        <span className="absolute inset-0" />
+                        {post.title}
+                      </h3>
                     </div>
-                  </div>
-                </div>
-                <div className="preview-post-title">
-                  <h3 className="preview-post-header">
-                    <span className="preview-post-span" />
-                    {latestVanPost.title}
-                  </h3>
-                </div>
-                <div className="preview-post-desc">
-                  <p>{latestVanPost.description}</p>
-                </div>
-              </article>
-            </div>
-          </Link>
-          <Link href={latestHomePost.slug}>
-            <div className="preview-article-wrapper-div">
-              <article key={latestHomePost._id} className="preview-article">
-                <div className="preview-article-date-time-category-grid">
-                  <div className="preview-article-date-time-col">
-                    <time
-                      dateTime={latestHomePost.date}
-                      className="preview-article-date-time"
-                    >
-                      {new Date(latestHomePost.date).toLocaleDateString('en-US', {
-                        day: 'numeric',
-                        month: 'long',
-                        year: 'numeric',
-                      })}
-                    </time>
-                  </div>
-                  <div className="preview-article-category-col">
-                    <div className="category-icons">
-                      {latestHomePost.category}
+                    <div className="preview-post-desc">
+                      <p>{post.description}</p>
                     </div>
-                  </div>
+                  </article>
                 </div>
-                <div className="preview-post-title">
-                  <h3 className="preview-post-header">
-                    <span className="preview-post-span" />
-                    {latestHomePost.title}
-                  </h3>
-                </div>
-                <div className="preview-post-desc">
-                  <p>{latestHomePost.description}</p>
-                </div>
-              </article> 
-            </div>
-          </Link>
-          <div className="w-full border-t lines lg:hidden" />
+              </Link>
+            ))}
         </div>
-        <div className="w-full border-t lines mt-10 hidden lg:block" />
+        <div className="preview-cards px-1">
+          <div className="preview-post-title">
+            <Link href="/blog">
+              <h3 className="preview-post-header">
+                <span className="absolute inset-0" />
+                Browse all blog posts &rarr;
+              </h3>
+            </Link>
+          </div>
+        </div>
+        <div className="w-full border-t lines mt-10 block" />
         <div className="mb-8 -mt-4">
           <NewsletterMain />
         </div>

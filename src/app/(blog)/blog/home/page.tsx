@@ -19,7 +19,7 @@ export default function Home() {
           </p>
         </div>
         <div className="preview-cards">
-          {allHomePosts.map((post) => (
+          {posts.map((post) => (
             <Link href={post.slug} key={post._id}>
               <div className="preview-article-wrapper-div">
                 <article key={post._id} className="preview-article">
