@@ -90,7 +90,7 @@ export default function Home() {
           <div className="grid-cols-1 mb-1">
             <div className="flow-root">
               <div>
-                <p>I am an experienced cloud and devops engineer based out of Sacramento, California. I have extensive experience working hands on with AWS, and have spent the majority of my professional career improving and honing my engineering and architecture skills.</p>
+                <p>I am an experienced Cloud and DevOps engineer based out of Sacramento, California. I have extensive experience working hands on with AWS, and have spent the majority of my professional career improving and honing my engineering and architecture skills.</p>
               </div>
               <div className="mt-4">
                 <p>I spent 3 years as a consultant with Slalom and gained a lot of experience working with a wide range of clients across several highly regulated industries.</p>
