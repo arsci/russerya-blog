@@ -90,16 +90,16 @@ export default function Home() {
           <div className="grid-cols-1 mb-1">
             <div className="flow-root">
               <div>
-                <p>Ryan is an experienced cloud engineer based out of Sacramento, CA. He has extensive experience with AWS and has spent the majority of his professional career improving and honing his skills.</p>
+                <p>I am an experienced cloud and devops engineer based out of Sacramento, CA. I have extensive experience working hands on with AWS, and have spent the majority of my professional career improving and honing my skills.</p>
               </div>
               <div className="mt-4">
-                <p>He spent 3 years as a consultant for Slalom and gained a lot of experience working with a wide range of clients across several regulated industries.</p>
+                <p>I spent 3 years as a consultant for Slalom and gained a lot of experience working with a wide range of clients across several regulated industries.</p>
               </div>
               <div className="mt-4">
-                <p>Ryan now works as an independent consultant, working closely with technology companies to design and build out critical infrastructure in AWS.</p>
+                <p>I now do mostly independent consulting contracts, working closely with technology companies to design and build out critical infrastructure in AWS.</p>
               </div>
               <div className="mt-4">
-                <p>In January of 2024 he launched Bright Wrench Design, a small online shop for hobby items that he&#39;s created.</p>
+                <p>In January of 2024 I launched Bright Wrench Design, a small online shop for hobby items that I&#39;ve created.</p>
               </div>
             </div>
           </div>
