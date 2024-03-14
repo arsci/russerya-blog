@@ -24,19 +24,24 @@ export default function Home() {
           {posts.map((post) => (
             <Link href={post.slug} key={post._id}>
               <div className="preview-article-wrapper-div">
-              <article key={post._id} className="preview-article">
-                <div className="preview-article-date-time-category-grid">
-                  <div className="preview-article-date-time-col">
-                    <time
-                      dateTime={post.date}
-                      className="preview-article-date-time"
-                    >
-                      {new Date(post.date).toLocaleDateString('en-US', {
-                        day: 'numeric',
-                        month: 'long',
-                        year: 'numeric',
-                      })}
-                    </time>
+                <article key={post._id} className="preview-article">
+                  <div className="preview-article-date-time-category-grid">
+                    <div className="preview-article-date-time-col">
+                      <time
+                        dateTime={post.date}
+                        className="preview-article-date-time"
+                      >
+                        {new Date(post.date).toLocaleDateString('en-US', {
+                          day: 'numeric',
+                          month: 'long',
+                          year: 'numeric',
+                        })}
+                      </time>
+                    </div>
+                    <div className="preview-article-category-col">
+                      <div className="category-icons">
+                        {post.category}
+                      </div>
                     </div>
                   </div>
                   <div className="preview-post-title">

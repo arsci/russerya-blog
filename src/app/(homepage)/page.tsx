@@ -58,26 +58,26 @@ export default function Home() {
                           year: 'numeric',
                         })}
                       </time>
+                    </div>
+                    <div className="preview-article-category-col">
+                      <div className="category-icons">
+                        {post.category}
                       </div>
-                      <div className="preview-article-category-col">
-                        <div className="category-icons">
-                          {post.category}
-                        </div>
-                      </div>
                     </div>
-                    <div className="preview-post-title">
-                      <h3 className="preview-post-header">
-                        <span className="absolute inset-0" />
-                        {post.title}
-                      </h3>
-                    </div>
-                    <div className="preview-post-desc">
-                      <p>{post.description}</p>
-                    </div>
-                  </article>
-                </div>
-              </Link>
-            ))}
+                  </div>
+                  <div className="preview-post-title">
+                    <h3 className="preview-post-header">
+                      <span className="absolute inset-0" />
+                      {post.title}
+                    </h3>
+                  </div>
+                  <div className="preview-post-desc">
+                    <p>{post.description}</p>
+                  </div>
+                </article>
+              </div>
+            </Link>
+          ))}
         </div>
         <div className="preview-cards px-1">
           <div className="preview-post-title">
