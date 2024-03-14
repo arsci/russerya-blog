@@ -89,7 +89,6 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className="w-full border-t lines mt-10 block" />
         <div className="mb-8 -mt-4">
           <NewsletterMain />
         </div>
