@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
       <html lang="en">
-        <body className={`${inter.className} bg-slate-50 dark:bg-gray-800`}>
+        <body className={`${inter.className} bg-slate-100 dark:bg-gray-800`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
           <MessageBubble />

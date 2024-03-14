@@ -225,11 +225,11 @@ export default function Home() {
                           <div className="grid-rows-1 text-lg text-left font-bold">
                               { event.href && <a href={event.href} target="_blank" className="inline-links">{event.company}</a> } { !event.href && <span>{event.company}</span> } {event.location && <span className="text-md font-normal mx-2">|</span>} {event.location && <span className="text-sm font-normal mx-0">{event.location}{" "}</span>}
                           </div>
-                          <div className="grid-rows-1 whitespace-nowrap text-left text-medium dark:text-gray-300 text-gray-600">
-                            <time dateTime={event.datetime}>{event.date}</time>
-                          </div>
                           <div className="grid-rows-1 text-left text-medium dark:text-gray-300 text-gray-600">
                             {event.title}{" "}
+                          </div>
+                          <div className="grid-rows-1 whitespace-nowrap text-left text-medium dark:text-gray-300 text-gray-600">
+                            <time dateTime={event.datetime}>{event.date}</time>
                           </div>
                           <div className="grid-rows-1 text-md dark:text-gray-300 text-gray-600 mt-2 flex-wrap">
                             <p>
@@ -254,172 +254,172 @@ export default function Home() {
         </div>
       </div>
       <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={setOpen}>
-        <Transition.Child
-          as={Fragment}
-          enter="ease-out duration-300"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="ease-in duration-200"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
-        </Transition.Child>
+        <Dialog as="div" className="relative z-10" onClose={setOpen}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+          </Transition.Child>
 
-        <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-          <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-            <Transition.Child
-              as={Fragment}
-              enter="ease-out duration-300"
-              enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-              enterTo="opacity-100 translate-y-0 sm:scale-100"
-              leave="ease-in duration-200"
-              leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-              leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-            >
-              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white dark:dark:bg-gray-800 px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-">
-                <div>
-                  <div className="mt-3 text-center sm:mt-5">
-                    <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900 dark:text-white">
-                      Send me an message
-                    </Dialog.Title>
-                    <div className="mt-2">
-                      <form onSubmit={handleSubmit} className="space-y-6">
-                        <div>
-                          <div className="mt-2">
-                            <div>
-                              <label htmlFor="name" className="sr-only">
-                                Name
+          <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                enterTo="opacity-100 translate-y-0 sm:scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              >
+                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white dark:dark:bg-gray-800 px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-">
+                  <div>
+                    <div className="mt-3 text-center sm:mt-5">
+                      <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900 dark:text-white">
+                        Send me an message
+                      </Dialog.Title>
+                      <div className="mt-2">
+                        <form onSubmit={handleSubmit} className="space-y-6">
+                          <div>
+                            <div className="mt-2">
+                              <div>
+                                <label htmlFor="name" className="sr-only">
+                                  Name
+                                </label>
+                                <input
+                                  id="name"
+                                  name="name"
+                                  type="text"
+                                  autoComplete="name"
+                                  required
+                                  className="relative block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                  placeholder="Name"
+                                />
+                              </div>
+                            </div>
+                            <div className="mt-2">
+                              <div>
+                                <label htmlFor="email-address" className="sr-only">
+                                  Email address
+                                </label>
+                                <input
+                                  id="email-address"
+                                  name="email"
+                                  type="email"
+                                  autoComplete="email"
+                                  required
+                                  className="relative block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                  placeholder="Email address"
+                                />
+                              </div>
+                            </div>
+                            <div className="mt-2">
+                              <label htmlFor="comment" className="sr-only">
+                                Message
                               </label>
-                              <input
-                                id="name"
-                                name="name"
-                                type="text"
-                                autoComplete="name"
-                                required
-                                className="relative block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                placeholder="Name"
+                              <textarea
+                                rows={4}
+                                name="comment"
+                                id="comment"
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                placeholder={'Message'}
                               />
                             </div>
                           </div>
-                          <div className="mt-2">
-                            <div>
-                              <label htmlFor="email-address" className="sr-only">
-                                Email address
-                              </label>
-                              <input
-                                id="email-address"
-                                name="email"
-                                type="email"
-                                autoComplete="email"
-                                required
-                                className="relative block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                placeholder="Email address"
-                              />
-                            </div>
+                          <div className="mt-5 sm:mt-6">
+                            {status === null && (
+                              <>
+                                <div className="flex justify-center items-center mb-6">
+                                  <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="g-recaptcha" />
+                                </div>
+                                <button
+                                  type="submit"
+                                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                >
+                                  Send
+                                </button>
+                                <button
+                                  type="button"
+                                  className="mt-2 inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+                                  onClick={() => setOpen(false)}
+                                >
+                                  Cancel
+                                </button>
+                              </>
+                            )}
+                            {status === "SUCCESS" && (
+                              <>
+                                <button
+                                  disabled={true}
+                                  type="submit"
+                                  className="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                >
+                                  Message Sent!
+                                </button>
+                                <button
+                                  type="button"
+                                  className="mt-2 inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+                                  onClick={() => setOpen(false)}
+                                >
+                                  Close
+                                </button>
+                              </>
+                            )}
+                            {status === "PENDING" && (
+                              <>
+                                <button
+                                  disabled={true}
+                                  type="submit"
+                                  className="flex w-full justify-center rounded-md bg-indigo-200 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                >
+                                  <ArrowPathIcon className="h-6 items-center justify-center" />
+                                </button>
+                                <button
+                                  type="button"
+                                  className="mt-2 inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+                                  onClick={() => setOpen(false)}
+                                >
+                                  Cancel
+                                </button>
+                              </>
+                            )}
+                            {status === "ERROR" && (
+                              <>
+                                <div className="flex justify-center items-center mb-6">
+                                  <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="g-recaptcha" />
+                                </div>
+                                <button
+                                  type="submit"
+                                  className="flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                >
+                                  Oops! We encountered an error. Please try again.
+                                </button>
+                                <button
+                                  type="button"
+                                  className="mt-2 inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+                                  onClick={() => setOpen(false)}
+                                >
+                                  Close
+                                </button>
+                              </>
+                            )}
                           </div>
-                          <div className="mt-2">
-                            <label htmlFor="comment" className="sr-only">
-                              Message
-                            </label>
-                            <textarea
-                              rows={4}
-                              name="comment"
-                              id="comment"
-                              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                              placeholder={'Message'}
-                            />
-                          </div>
-                        </div>
-                        <div className="mt-5 sm:mt-6">
-                          {status === null && (
-                            <>
-                              <div className="flex justify-center items-center mb-6">
-                                <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="g-recaptcha" />
-                              </div>
-                              <button
-                                type="submit"
-                                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                              >
-                                Send
-                              </button>
-                              <button
-                                type="button"
-                                className="mt-2 inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
-                                onClick={() => setOpen(false)}
-                              >
-                                Cancel
-                              </button>
-                            </>
-                          )}
-                          {status === "SUCCESS" && (
-                            <>
-                              <button
-                                disabled={true}
-                                type="submit"
-                                className="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                              >
-                                Message Sent!
-                              </button>
-                              <button
-                                type="button"
-                                className="mt-2 inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
-                                onClick={() => setOpen(false)}
-                              >
-                                Close
-                              </button>
-                            </>
-                          )}
-                          {status === "PENDING" && (
-                            <>
-                              <button
-                                disabled={true}
-                                type="submit"
-                                className="flex w-full justify-center rounded-md bg-indigo-200 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                              >
-                                <ArrowPathIcon className="h-6 items-center justify-center" />
-                              </button>
-                              <button
-                                type="button"
-                                className="mt-2 inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
-                                onClick={() => setOpen(false)}
-                              >
-                                Cancel
-                              </button>
-                            </>
-                          )}
-                          {status === "ERROR" && (
-                            <>
-                              <div className="flex justify-center items-center mb-6">
-                                <ReCAPTCHA ref={recaptcha} sitekey={CAPTCHA_SITE_KEY} className="g-recaptcha" />
-                              </div>
-                              <button
-                                type="submit"
-                                className="flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                              >
-                                Oops! We encountered an error. Please try again.
-                              </button>
-                              <button
-                                type="button"
-                                className="mt-2 inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
-                                onClick={() => setOpen(false)}
-                              >
-                                Close
-                              </button>
-                            </>
-                          )}
-                        </div>
-                      </form>
+                        </form>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Dialog.Panel>
-            </Transition.Child>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
           </div>
-        </div>
-      </Dialog>
-    </Transition.Root>
+        </Dialog>
+      </Transition.Root>
     </div>
   )
 }
