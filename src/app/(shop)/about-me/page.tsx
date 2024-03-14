@@ -90,13 +90,13 @@ export default function Home() {
           <div className="grid-cols-1 mb-1">
             <div className="flow-root">
               <div>
-                <p>I am an experienced cloud and devops engineer based out of Sacramento, CA. I have extensive experience working hands on with AWS, and have spent the majority of my professional career improving and honing my skills.</p>
+                <p>I am an experienced cloud and devops engineer based out of Sacramento, California. I have extensive experience working hands on with AWS, and have spent the majority of my professional career improving and honing my engineering and architecture skills.</p>
               </div>
               <div className="mt-4">
-                <p>I spent 3 years as a consultant for Slalom and gained a lot of experience working with a wide range of clients across several regulated industries.</p>
+                <p>I spent 3 years as a consultant with Slalom and gained a lot of experience working with a wide range of clients across several highly regulated industries.</p>
               </div>
               <div className="mt-4">
-                <p>I now do mostly independent consulting contracts, working closely with technology companies to design and build out critical infrastructure in AWS.</p>
+                <p>My focus lately has been on independent consulting projects, working closely with technology companies to design and build out critical infrastructure in AWS.</p>
               </div>
               <div className="mt-4">
                 <p>In January of 2024 I launched Bright Wrench Design, a small online shop for hobby items that I&#39;ve created.</p>
