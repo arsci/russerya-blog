@@ -31,11 +31,12 @@
 }
 
 .category-icons {
-  @apply relative z-10 rounded-full bg-gray-200 dark:bg-gray-600 px-3 py-1.5 font-medium text-gray-600 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-900
+  @apply relative z-10 rounded-full bg-gray-100 dark:bg-gray-800 px-3 py-1.5 font-medium text-gray-600 dark:text-gray-200
 }
 
 .inline-links {
-  @apply text-gray-400 hover:text-gray-500 dark:hover:text-gray-300
+  @apply text-gray-500 hover:text-slate-800 dark:hover:text-slate-300 dark:text-gray-400;
+  text-decoration: underline;
 }
 
 .blog-image-full {
@@ -44,4 +45,80 @@
 
 .blog-image-qt {
   @apply h-auto rounded-md transition-shadow duration-300 ease-in-out shadow-lg hover:shadow-black/30 w-1/4
+}
+
+.li-bullet {
+  font-size: 14px;
+  margin-left: 10px;
+  list-style-type: circle;
+}
+
+.disabledInput {
+  color: red;
+}
+
+.g-recaptcha {
+  overflow:hidden;
+  width:306px;
+  height:80px;
+  @apply border-2 rounded-sm;
+}
+
+.preview-cards-header-blog-pages {
+  @apply mx-auto max-w-2xl lg:mx-0
+}
+ .preview-cards-blog-pages-p {
+  @apply mt-2 mb-5 text-lg leading-8
+ }
+
+.preview-cards-header-homepage {
+  @apply mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 mb-6 lg:max-w-none lg:grid-cols-3
+}
+
+.preview-cards-header-text {
+  @apply text-3xl font-bold tracking-tight
+}
+
+.preview-cards {
+  @apply mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-8 pt-4 lg:max-w-none lg:grid-cols-3
+}
+
+.preview-article-wrapper-div {
+  @apply h-full bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 rounded-xl py-5 px-5
+}
+
+.preview-article {
+  @apply flex max-w-xl flex-col items-start justify-between
+}
+
+.preview-article-date-time-category-grid {
+  @apply grid grid-cols-2 w-full
+}
+
+.preview-article-date-time-col {
+  @apply mt-1 gap-x-4 text-xs grid-cols-1
+}
+
+.preview-article-date-time {
+  @apply mb-2 block text-xs
+}
+
+.preview-article-category-col {
+  @apply flex gap-x-4 text-xs grid-cols-1 justify-end items-center
+}
+
+.preview-post-title {
+  @apply relative mb-2
+}
+
+.preview-post-header {
+  @apply mt-3 text-lg font-semibold leading-6 dark:hover:text-white hover:text-black
+}
+
+.preview-post-span {
+  @apply absolute inset-0
+}
+
+.preview-post-desc {
+  @apply line-clamp-3 text-sm leading-6
 }

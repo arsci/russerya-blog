@@ -1,7 +1,7 @@
 export const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Blog', href: '/blog' },
+  { name: 'Shop', href: 'https://shop.russerya.com', target: '_blank' },
   { name: 'Van Build', href: '/blog/van' },
   { name: 'Home Projects', href: '/blog/home' },
-  { name: 'Shop <- New!', href: 'https://shop.russerya.com' }
+  { name: 'Tech', href: '/blog/tech' },
+  { name: 'About Me', href: '/about-me' },
 ]

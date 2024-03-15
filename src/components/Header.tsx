@@ -1,10 +1,11 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import * as Nav from './Navigation'
 import { DarkModeSwitcher } from './DarkMode'
 import { Disclosure } from '@headlessui/react'
 import React, { useState } from 'react';
-import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
 
 export default function Header() {
 
@@ -22,17 +23,19 @@ export default function Header() {
             <div className="flex h-16 justify-between">
                 <div className="flex flex-shrink-0 items-center">
                   <Link href="/">
-                    <img
-                      className="inline-block h-10 w-10 rounded-full"
+                    <Image 
                       src="/favicon.ico"
-                      alt=""
+                      width={100}
+                      height={100}
+                      alt="favicon"
+                      className="inline-block h-10 w-10 rounded-full"
                     />
                   </Link>
                   <nav className="flex -mb-6 sm:ml-6 columns-2 sm:flex sm:justify-center sm:space-x-8 px-2" aria-label="Header">
                     <div className="hidden sm:flex ">
                       {Nav.navigation.map((item) => (
                         <div key={item.name} className="pb-6">
-                          <a href={item.href} className="inline-flex items-center border-b-2 border-transparent pt-1 text-sm font-medium px-4 text-gray-500 hover:border-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100">
+                          <a href={item.href} target={item.target} className="inline-flex items-center border-b-2 border-transparent pt-1 text-sm font-medium px-4 text-gray-500 hover:border-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100">
                             {item.name}
                           </a>
                         </div>
@@ -49,7 +52,7 @@ export default function Header() {
                       }>
                         {Nav.navigation.map((item) => (
                         <div key={item.name} className="pb-6 ml-6">
-                          <a href={item.href} className="inline-flex items-center border-b-2 border-transparent pt-1 text-sm font-medium px-2 text-gray-500 hover:border-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100">
+                          <a href={item.href} target={item.target} className="inline-flex items-center border-b-2 border-transparent pt-1 text-sm font-medium px-2 text-gray-500 hover:border-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100">
                             {item.name}
                           </a>
                         </div>

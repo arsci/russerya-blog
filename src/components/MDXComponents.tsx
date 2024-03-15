@@ -5,6 +5,9 @@ import { cn } from "@/utils/utils"
 import { Callout } from "@/components/Callout"
 import { MdxCard } from "@/components/MDXCard"
 import { getMDXComponent } from "next-contentlayer/hooks"
+import { NewsletterFormStacked } from "./Newsletter"
+import { NewsletterSeries } from "./Newsletter"
+import { NewsletterCurious } from "./Newsletter"
 
 const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -93,6 +96,16 @@ const components = {
     // eslint-disable-next-line @next/next/no-img-element
     <img className={cn("rounded-md border", className)} alt={alt} {...props} />
   ),
+  a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
+    <a
+      target="_blank"
+      className={cn(
+        "inline-links",
+        className
+      )}
+      {...props}
+    />
+  ),
   hr: (props: React.HTMLAttributes<HTMLHRElement>) => <hr className="my-4 md:my-8" {...props} />,
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
     <div className="my-6 w-full overflow-y-auto">
@@ -126,6 +139,9 @@ const components = {
   Image,
   Callout,
   Card: MdxCard,
+  NewsletterFormStacked,
+  NewsletterSeries,
+  NewsletterCurious,
 }
 
 interface MdxProps {
