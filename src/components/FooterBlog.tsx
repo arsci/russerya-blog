@@ -4,7 +4,7 @@ import { NewsletterMain } from './Newsletter'
   
 export default function Footer() {
   return (
-    <footer className="bg-slate-50 dark:bg-gray-800 mt-auto">
+    <footer className="bg-slate-100 dark:bg-gray-800 mt-auto">
       <div className="relative">
         <div className="absolute inset-0 flex items-center" aria-hidden="true">
           <div className="w-full border-t lines" />
