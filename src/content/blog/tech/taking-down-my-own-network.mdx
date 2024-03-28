@@ -1,0 +1,133 @@
+---
+title: "Imploding My Home Network"
+author: "Ryan Russell"
+date: "2024-03-25"
+category: "tech"
+description: "The value of automated backups and things I could further improve."
+ogImage: "home_network/network_down.png"
+---
+
+It was a beautiful, sunny Thursday afternoon. I just returned from lunch and was getting ready to head to 
+San Diego for the weekend for a half marathon. That afternoon I was expecting UPS to deliver a new Ubiquiti 95W
+24 port POE switch to alleviate some POE constraints, and I was hoping to get it installed and configured before leaving
+for the airport. I'd finally be able to get rid of a few POE injectors scattered around 
+the house and eliminate the occasional dropped camera feed with "POE capacity exceeded" error notifications.
+
+I sat down and started running some config backups. I would also need to complete firmware updates on a few switches and update 
+the OS on the UDM Pro. I was planning to stay up a little later that night since the network would be unavailable while updates ran and 
+I reconfigured the switches. 
+
+The plan was to replace the 45W 16-port POE lite switch that was over capacity in the upstairs bedroom 
+closet with the new 95W 24-port POE rack mounted switch. I'd be replacing an 8-port POE lite switch in the network rack in the office 
+that had the UDM. 
+
+One of the devices in the network rack with the UDM and switch is an old Dell laptop I repurposed into a "server" running Ubuntu Server 20.04. It's old, a little finicky, but it 
+was completely free to get running and makes for a great little dev machine on the network. As an added bonus the built in battery means it has virtually zero downtime when we lose power.
+
+This 15+ year old laptop started as a simple dev server I could play around with, but over the years has turned into something much more critical that the entire network 
+relies on (the story of every successful POC). It now runs Home Assistant and ZWaveJS for all of our home automation and controls, and PiHole for DNS/ad-blocking. It has zero redundancy, but does have automated backups for the critical services so if something does happen, I can at least cobble it back 
+together with minimal downtime. 
+
+This old laptop server would also need to be updated, along with Home Assistant, ZWaveJS, and the PiHole.
+
+---
+
+I got started with the server first and logged into AWS to make sure my nightly backups were in place should I need them, and everything was looking good. I SSH'd into the server to do a quick 
+sanity check of the docker services and make sure everything was still running smoothly:
+
+```bash
+port 22: Connection refused
+```
+Weird. 
+
+I hop over to the server rack and try to get in directly from the laptop command line. Everything looked fine other than the backlog of system updates and a `***Restart Required***` message. 
+Let's try a reboot first to try and get an SSH connection working so I don't have to sit on the floor with my head in the server rack all evening. 
+Shut down went fine, but immediately hung on boot with nothing but a single flashing cursor in the top left corner. No keyboard inputs, no logs, no response.
+
+I shut it down again and tried to boot it back up. It showed the Dell boot screen and I went into the boot menu. It still showed the hard drive and everything looked normal, so I tried to boot it again, and it 
+immediately jumped to the flashing cursor. It wouldn't accept any keyboard inputs, even from a secondary USB keyboard. Still no logs or any other indication Ubuntu was doing _anything_. 
+I tried switching to a different tty, with no luck. I shut it back down and tried again, and that's when I heard it: a faint, dreaded _click...click...click_ coming from behind the hard drive cover. 
+
+The poor ol' girl was on her last legs, and it was looking like the 15 year old 256GB disk drive that I should have replaced years ago, had finally given in. 
+
+First things first: confirm UniFi and Wireguard were failing over to their secondary DNS entries now that the PiHole was out of the picture. Should I not be able to 
+get things back up before my flight on Friday, the network should be able to still function, even though all of our home automation and control systems in Home Assistant would be down. 
+The household would be limited to manually setting thermostats and flipping light switches for the weekend, which while not ideal, is certainly not the end of the world. 
+
+```bash
+nslookup google.com
+
+Server:		1.1.1.1
+Address:	1.1.1.1#53
+
+Non-authoritative answer:
+Name:	google.com
+Address: 142.250.188.23
+```
+
+At least that was working! 
+
+---
+
+At this point I had to decide what to do next. The Ubiquiti switch had arrived by this time, but I didn't want to further risk the network being down while I was gone, so I 
+wanted to try and get the server back up before reconfiguring the hardware and complicating the situation even more. I pulled the hard drive from the Dell to try and get it to boot in another laptop. 
+It was a long shot, but maybe there was just an issue with the motherboard or the connection to the hard drive. Unfortunately it was the same dreaded _click...click...click._ 
+
+I had an extra blank 500GB solid state drive lying around and after a few hours of trying different methods to get the server to boot, I finally decided to rebuild it from scratch on
+the latest Ubuntu Server LTS image (22.04). I had my backups from Home Assistant, ZWave JS, and PiHole in AWS, as well as the docker compose configurations I was 
+running everything from. It would be a late night, but it _should_ work, and once the server was stable I might still have time to reconfigure the network hardware and install the new switch.
+
+I downloaded the Ubuntu image, flashed my USB drive with the `.iso` file, booted from it, and began the Ubuntu install process on the new hard drive.
+
+Once it was installed, I setup docker and brought up Home Assistant, ZWaveJS, and the PiHole, all set to the latest stable images. All three services started up normally from blank configs. Now it was time 
+to restore the backups. Since Home Assistant and ZWaveJS are docker containers, they do not have a restore option from their respective GUIs. I had to manually copy the 
+configuration files backed up in AWS into the fresh new docker containers and restart them. All three came back up: The PiHole GUI showed historical data 
+and my block lists, HomeAssistant loaded all of the old dashboards, and ZWaveJS listed all of the correct ZWave/Zigbee devices. The only errors were with the Zwave/Zigbee devices, but after
+around 20 minutes of fresh "handshakes" between the controller and all of the devices, everything seemed to be working.
+
+The last step was to replace the automated backup configs which was a combination of backup settings in Home Assistant/ZWave/PiHole GUIs (all of which carried over), and cron jobs to upload the backup files to AWS S3. 
+I initiated backups in the GUI menus of each service and reconfigured the hourly cron jobs.
+
+From my Mac I tested to see if UniFi and Wireguard were able to resolve DNS via the PiHole:
+
+```bash
+nslookup google.com
+Server:		10.5.5.192
+Address:	10.5.5.192#53
+
+Non-authoritative answer:
+Name:	google.com
+Address: 172.217.164.110
+```
+
+Everything was looking good! It was late, but things were looking up, and was thinking I could still get the new switch installed by morning.
+
+---
+
+With the server stable on the new solid state hard drive, all that was left was to run the UniFi updates and move the switches around. The switches all updated successfully, and the UniFi OS
+update completed fine after that. 
+
+I installed the new 24-port POE switch in the network closet, and UniFi adopted it with no issues. I moved the 16-port POE switch down to the network rack in the office and reconfigured 
+the switch port settings for connections there. For now, the old 8-port POE switch wasn't needed, but eventually I would move it over to the living room TV to take over and replace a few POE injectors. 
+I determined that would be a project for another night.
+
+Once all the ports were configured with the proper profiles, all the devices on the network came back online in their respective VLANs. I checked for any additional UniFi and Ubuntu 
+updates and rebooted all the devices one last time as a sanity check. 
+
+The Dell laptop with Home Assistant, PiHole, and ZWaveJS came up first, followed shortly after by UniFi. After a few minutes all of the switches and APs were showing network devices and traffic appeared 
+to be flowing normally. DNS was resolving as expected from both UniFi and my Wireguard VPN, and the PiHole dashboard was showing new data. Home Assistant was able to control switches and thermostats, and 
+the sensors around the house were all reporting correct statuses. 
+
+The final step was to validate that the automated backups were working. By this point the hourly cron jobs would have run to upload the manual backups I triggered earlier. Logging into S3 I could see 
+a backup file from each service. Just to be absolutely sure it was right, I downloaded and unzipped them to spot check a few files and it all looked good!
+
+**2:14AM**: time to quickly tidy things up, put the trusty Dell laptop back onto its shelf in the rack, close up the cabinet, and get some sleep!
+
+---
+
+### Next up: 
+
+* Finally replace the old Dell laptop before the next component fails and install a true, dedicated, rack-mounted server with some storage redundancy so that when this happens again 
+I can just swap out the failed drive and be done.
+* Upgrade UniFi Protect to a dedicated UniFi NVR device to take some of the load off of the UDM, and gain some storage redundancy with the security camera data (the UDM comes with a single HDD slot)
+* Move the 8-port POE switch to the living room TV area to clean up the POE injectors. It'll replace a cheap non-POE capable switch for the devices in that location.
