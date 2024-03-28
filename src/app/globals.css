@@ -122,3 +122,11 @@
 .preview-post-desc {
   @apply line-clamp-3 text-sm leading-6
 }
+
+h1 {
+  text-align: center;
+}
+
+.photo-circle {
+  @apply mb-10 relative aspect-[10/10] w-96 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800
+}
