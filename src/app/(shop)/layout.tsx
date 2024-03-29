@@ -3,12 +3,11 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import { Analytics } from '../../components/Analytics'
+import { Analytics } from '../../components/VercelAnalytics'
 import { ThemeProvider } from "../../components/ThemeProvider";
-import { GoogleTagManager } from '@next/third-parties/google'
+import GoogleAnalytics  from "../../components/GoogleAnalytics"
 
 const inter = Inter({ subsets: ['latin'] })
-const GTMID = process.env.NEXT_PUBLIC_GTMID ?? ''
 
 export const metadata: Metadata = {
   title: 'Ryan Russell',
@@ -23,7 +22,7 @@ export default function RootLayout({
   return (
       <html lang="en">
         <body className={`${inter.className} bg-slate-100 dark:bg-gray-800`}>
-        <GoogleTagManager gtmId={GTMID} />
+        <GoogleAnalytics />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
           {children}
