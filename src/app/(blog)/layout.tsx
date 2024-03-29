@@ -7,7 +7,6 @@ import Footer from '../../components/FooterBlog'
 import { Analytics } from '../../components/VercelAnalytics'
 import { ThemeProvider } from "../../components/ThemeProvider";
 import { GoogleTagManager } from '@next/third-parties/google'
-import GoogleAnalytics  from "../../components/GoogleAnalytics"
 
 const inter = Inter({ subsets: ['latin'] })
 const GTMID = process.env.NEXT_PUBLIC_GTMID ?? ''
@@ -25,7 +24,6 @@ export default function RootLayout({
   return (
       <html lang="en">
         <body className={`${inter.className} bg-slate-100 dark:bg-gray-800`}>
-        <GoogleAnalytics />
         <GoogleTagManager gtmId={GTMID} />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
