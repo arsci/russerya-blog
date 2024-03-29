@@ -5,8 +5,10 @@ import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import { Analytics } from '../../components/Analytics'
 import { ThemeProvider } from "../../components/ThemeProvider";
+import { GoogleTagManager } from '@next/third-parties/google'
 
 const inter = Inter({ subsets: ['latin'] })
+const GTMID = process.env.NEXT_PUBLIC_GTMID ?? ''
 
 export const metadata: Metadata = {
   title: 'Ryan Russell',
@@ -21,6 +23,7 @@ export default function RootLayout({
   return (
       <html lang="en">
         <body className={`${inter.className} bg-slate-100 dark:bg-gray-800`}>
+        <GoogleTagManager gtmId={GTMID} />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
           {children}
