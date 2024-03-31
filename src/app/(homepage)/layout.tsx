@@ -23,6 +23,7 @@ export default function RootLayout({
   return (
       <html lang="en">
         <body className={`${inter.className} bg-slate-100 dark:bg-gray-800`}>
+        <meta name="facebook-domain-verification" content="3v84x6tnl2ebgbx0atj2t8zvt5l582" />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
           <MessageBubble />
