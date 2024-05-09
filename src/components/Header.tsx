@@ -52,7 +52,7 @@ export default function Header() {
                       }>
                         {Nav.navigation.map((item) => (
                         <div key={item.name} className="pb-6 ml-6">
-                          <a href={item.href} target={item.target} className="inline-flex items-center border-b-2 border-transparent pt-1 text-sm font-medium px-2 text-gray-500 hover:border-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100">
+                          <a href={item.href} className="inline-flex items-center border-b-2 border-transparent pt-1 text-sm font-medium px-2 text-gray-500 hover:border-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100">
                             {item.name}
                           </a>
                         </div>

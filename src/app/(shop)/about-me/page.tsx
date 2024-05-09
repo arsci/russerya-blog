@@ -223,9 +223,9 @@ export default function Home() {
                         </div>
                         <div className="grid">
                           <div className="grid-rows-1 text-lg text-left font-bold">
-                              { event.href && <a href={event.href} target="_blank" className="inline-links">{event.company}</a> }
-                              { event.href &&<span>&nbsp;&nbsp;&nbsp;</span> }
-                              { !event.href && <span>{event.company}&nbsp;&nbsp;&nbsp;</span> } 
+                              <span>
+                                {event.company}&nbsp;&nbsp;&nbsp;
+                              </span>
                               { event.location && <br className="md:hidden lg:hidden" /> } 
                               { event.location && <span className="text-sm font-normal whitespace-nowrap mx-0">{event.location}{" "}</span> }
                           </div>
