@@ -77,7 +77,6 @@ export default function Home() {
                 <p className="mt-8">We offer professional local 3D printing and design services based in Sacramento, California.</p>
                 <p className="mt-4">We can help with full project lifecycles, helping you design your project in Onshape and print for local pickup or shipping.</p>
                 <p className="mt-4">Just need a way to print your design? We can take your finished design files and print them locally and ship! </p>
-                <p className="mt-4 inline-links"><Link href="https://shop.brightwrenchdesign.com/">Check out our shop for examples of some of our designs!</Link></p>
               </div>
             </div>
           </div>
