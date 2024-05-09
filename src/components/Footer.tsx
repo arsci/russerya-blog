@@ -14,7 +14,7 @@ export default function Footer() {
       </div>
       <div className="mt-10 flex justify-center space-x-10">
         {Socials.footer.map((item) => (
-          <a key={item.name} href={item.href} target={item.target} className="text-gray-500 dark:text-gray-300">
+          <a key={item.name} href={item.href} className="text-gray-500 dark:text-gray-300">
             <span className="sr-only">{item.name}</span>
             <item.icon className="h-6 w-6" aria-hidden="true" />
           </a>

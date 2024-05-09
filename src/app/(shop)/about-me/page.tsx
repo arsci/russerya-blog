@@ -72,7 +72,7 @@ export default function Home() {
             <div className='grid-cols-1'>
               <div className='flex justify-end items-center sm:space-x-10 space-x-6 mt-3'>
                 {Socials.portfolio.map((item) => (
-                  <a key={item.name} href={item.href} target={item.target} className="text-gray-500 dark:text-gray-300">
+                  <a key={item.name} href={item.href} className="text-gray-500 dark:text-gray-300">
                     <span className="sr-only">{item.name}</span>
                     <item.icon className="h-7 w-7 sm:h-12 sm:w-12" aria-hidden="true" />
                   </a>
@@ -223,9 +223,9 @@ export default function Home() {
                         </div>
                         <div className="grid">
                           <div className="grid-rows-1 text-lg text-left font-bold">
-                              { event.href && <a href={event.href} target="_blank" className="inline-links">{event.company}</a> }
-                              { event.href &&<span>&nbsp;&nbsp;&nbsp;</span> }
-                              { !event.href && <span>{event.company}&nbsp;&nbsp;&nbsp;</span> } 
+                              <span>
+                                {event.company}&nbsp;&nbsp;&nbsp;
+                              </span>
                               { event.location && <br className="md:hidden lg:hidden" /> } 
                               { event.location && <span className="text-sm font-normal whitespace-nowrap mx-0">{event.location}{" "}</span> }
                           </div>
