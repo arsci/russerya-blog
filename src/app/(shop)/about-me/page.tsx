@@ -72,7 +72,7 @@ export default function Home() {
             <div className='grid-cols-1'>
               <div className='flex justify-end items-center sm:space-x-10 space-x-6 mt-3'>
                 {Socials.portfolio.map((item) => (
-                  <a key={item.name} href={item.href} target={item.target} className="text-gray-500 dark:text-gray-300">
+                  <a key={item.name} href={item.href} className="text-gray-500 dark:text-gray-300">
                     <span className="sr-only">{item.name}</span>
                     <item.icon className="h-7 w-7 sm:h-12 sm:w-12" aria-hidden="true" />
                   </a>
