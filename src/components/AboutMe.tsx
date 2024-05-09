@@ -62,6 +62,7 @@ export const timeline = [
     date: 'January 2024',
     datetime: '2024-01-01',
     icon: CubeTransparentIcon,
+    href: 'https://www.brightwrenchdesign.com',
     comment: "Newly launched this year, Bright Wrench Design is a small online shop for hobby products",
     bullets: []
   },
