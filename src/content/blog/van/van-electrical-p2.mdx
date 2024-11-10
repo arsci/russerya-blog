@@ -1,0 +1,127 @@
+---
+title: "Electrical Series Part 2: Distribution Panel Installation"
+author: "Ryan Russell"
+date: "2024-11-13"
+category: "van build"
+description: "Putting together the first electrical building block"
+ogImage: "van_electrical/electrical_diagram.png"
+---
+
+---
+
+<p align="center">This is **Part 2** of the Electrical Series. If you haven't read [**Part 1: Design and Planning**, check it out here!](/blog/van/van-electrical-p1)</p>
+
+---
+
+This part of the electrical series will cover the design and installation of distribution panel. The distribution panel is where all of the core electrical 
+distribution components get mounted, and where all of the primary power connections are made (batteries, solar, alternator charging, DC distribution, inverter, and monitoring devices).
+
+<NewsletterSeries />
+
+### Location
+
+When we initially started planning out all of the utility systems in the van (electrical, plumbing, etc), we decided the goal was to fit all of the electrical distribution equiptent over 
+the driver's side rear wheel well space, underneath the bed platform. The batteries would be located in the center of the van, with access directly to the distribution
+panel on the driver's side. We did have to raise the bed platform slightly from our original design to accomodate the Multiplus, but thankfully we made those changes before ordering all of the 
+extruded aluminium framing! 
+
+### Components
+
+The distribution panel would need to fit almost all of the Victron distribution components, monitoring devices, fuse panels, and power disconnect swiches:
+
+* Victron Distributor: The central distribution device that ties the batteries into the rest of the electrical components (solar, DC sub panels, air conditioner, Multiplus/AC distribution
+panel, etc)
+* Battery SmartShunt: Placed on the negative terminal of the distributor from the battery cable, the SmartShunt monitors charge level, load in and out, and battery terminal temperature.
+* Dual Victron MPPT SmartSolar Charge Controllers & Solar Disconnect Switch: One charge controller for the roof mounted 360W solar array, and another for the 400W ground deploy solar
+array. These convert the solar input to 24v. The solar disconnect device would be located just before the dual MPPTs allowing us to fully disconnect the solar power sources.
+* Dual Victron DC-DC Charge Controllers: These charge controllers converts the 12v input supplied by the alternator when the engine is running to 24v. Since the Orion DC-DC charges are not directly 
+compatible wth the CerboGX for monitoring, we have an additional SmartShunt on the charge controller outputs to monitor power. There is an additional circuit breaker between the alternator and charge 
+controllers, and additional fuses between the charge controllers and distributor in case of a failure/short circuit.
+* Victron CerboGX: The central monitoring device for our electrical system. The SmartShunts, MPPT charge controllers, and water tank sensor all send data to the Cerbo for 
+monitoring and visualization. The CerboGX also streams data over MQTT to several Home Assistant servers we have setup to allow us to remotely monitor everything.
+
+The following components did not fit directly on the main distribution panel due to space between extruded aluminium supports, but are located just in front on a separate distribution panel:
+
+* DC fuse panels: There are two 24v DC fuse panels to distribute 24v power to various components around the van (refridgerator, lights, USB plugs, water pump, etc). One 
+of the DC fuse panels has a main disconnect switch that allows us to turn off the panel entirely to avoid small power draws that may drain the battery when stored for 
+extended periods of time (lights, frdige, pumps, etc). The second panel does not have a main disconnect and is intended to be "live" 100% of the time, as long as the main battery disconnect is "on".
+This panel is used primarily by monitoring and communication systems: the internal security/monitoring router, home assistant server, CerboGX, etc.
+
+* Multiplus: Though not yet installed, the Muliplus will be located on the panel with the DC fuse panels and is used to supply 120v power capabilities (shore power charging, 120v outlets). For now 
+we don't need 120v, so this component will be installed at a later time.
+
+### Design
+
+Initally we imported the 3D CAD files of the Victron components into OnShape and mapped out the space dimensions of the area over the wheel well we had reserverd for the electrical panel. Since we 
+had not yet purchased the electrical componenets yet, the CAD model gave us the opportunity to visualize where items would fit, and start to plan out wiring and 
+other electrical connections. We came up with a few possible designs, and then started ordering the components once we completed the power and load calculations.
+
+-Photo of CAD drawing-
+
+### Mock up
+
+Once we recieved all of the components, we wanted to lay them all out to check placement and wire fitment. Wire sizes ranged from 2/0 to 18AWG so we had to make a few adjustments 
+from the original CAD layout we had designed. Based on where we would need to put the solar ground deploy plug in the side of the van, and the shore power plug we needed the solar controllers to be 
+near the back, and it made more sense to put the DC-DC alternator chargers at the front.
+
+We used a spare sheet of styrofoam packing material and painters tape to make a template from the interior panel of the van. We placed this template on the garage floor to map out 
+where the access holes in the van lined up. This allowed us to plan out where to run wires back behind the inteior panels of the van, which would help keep the wiring out of the way 
+and allow clear access to the Victron components and disconnects.
+
+-photo of template on garage floor-
+
+
+### Build
+
+After mapping everything out, we had our final design. We transferred the template onto the Coosa board where we would mount all of the components. We drilled the mounting holes and used ____ in the back 
+of the board that we would later use to secure all of the Victron components with machine screws.
+
+-photo of victron board-
+
+Once the holes were drilled we painted the board, then installed the Victron devices. 
+
+-photo of mouned victron devices being placed-
+
+### Install
+
+With the Victron components mounted and the connections, fuses, and disconnects all in place, it was time to mount the distrubution panel in the van and get ready to connect the rest of the wiring. We 
+designed the panels to be removable with all of the framing in place, so we were able to simply slide the panels in and secure them. 
+
+-photo of panel fit test installed in van-
+
+We started with the batteries first. I designed and 3D printed spacers that lock into the extruded aluminum to secure the base of the batteries in place. This would keep them from 
+sliding around horizontally on the floor. Using metal clips and straps, we secured the batteries down to the framing. 
+
+With the batteries secured, it was time to cut the 2/0 wiring to connect the four 100ah battery units together and connect them to the main battery disconnect. In order to make the disconnect accessible 
+to be turned off in case of emergency, it needed to be placed at the back of electrical panel. This meant running the 2/0 positive wire from the battery bank, into the side electrical cabinet, 
+over the wheel well to the back where the disconnect is. From there, the positive cable needed to be routed forward where the distributor was mouted. 
+
+-picture of battery bank-
+
+With the potentially large amount of amperage that could be running through the 2/0 cabling from the batteries, it is important to have equal length positive and negative power cables. This meant there 
+would be extra negative cable to deal with in order to match the length of the positive cable back to the main battery disconnect. By running the negative cabling in an "S" pattern across the top of the batteries 
+we were able to deal with most of the extra length, and secure it under the straps for the batteries. The negaitve wiring terminated at the Victron distribution panel SmartShunt. The SmartShunt here is used to 
+monitor all power into and out of the battery bank, as well as keeping track of the state of charge. 
+
+-picture of distribution panel with wiring connected-
+
+Now that the batteries were connected, it was time to wire in the solar charge controllers. We routed the solar wires down from the panel arrays, into the solar disconnect, and to the MPPT charge controllers. 
+The charge controllers then get connected into the distributor.
+
+After the charge controllers were connected it was time to connect the DC-DC alternator chargers. Though the transit comes with a fused auxillary connection directly off of the main 12v van battery bank, we still opted 
+to install a separate dedicated circuit breaker. From there we ran the wiring back to the distributor. The van came from the factory with an option second battery bank that includes it's own shut-off circuit to prevent 
+auxillary loads from unintentionally draining the the starter battery so we have not run wiring to the "disable" switches on the Victron DC-DC charge controllers. If we need to manually disconnect the alternator 
+charging circuit we can always manually trip the circuit breaker. 
+
+-picture of circuit breaker-
+
+Next up was connecting the Velit air conditioning unit. We purchased a unit designed to work directly with 24v so that we would not need to convert voltage or run larger wiring. The harness that came with the 
+unit had sufficient length to run down the side of the van from the roof and connect in directly to the distributor. 
+
+The final connection into the distributor (for now) was the DC fuse panels. We installed 2 separate fuse panels - one with a main disconnect that could be switched off when the van was not in use, and another that powered 
+the primary monitoring and communication systems (intended to be on as long as the main battery disconnect switch was enabled). These are located just forward of the batteries and are more easily accessible than 
+the main electrical panel. 
+
+-picture of dc fuse panels-
+
+We left one remaining spot on the distributor open that is reserved for the Multiplus, so once we get to the point where we need it, we can install and wire it up with relative ease.
