@@ -286,7 +286,7 @@ export default function Home() {
                   <div>
                     <div className="mt-3 text-center sm:mt-5">
                       <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900 dark:text-white">
-                        Send me an message
+                        Send me a message
                       </Dialog.Title>
                       <div className="mt-2">
                         <form onSubmit={handleSubmit} className="space-y-6">
